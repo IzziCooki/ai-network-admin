@@ -1,1 +1,3 @@
-# s26_march26_example_claude_skills_agent_prototyping
+# Network Admin Agent Prototype
+
+This repository contains a Claude Skills-based AI agent prototype that supports network administration tasks for pfSense and related Linux/Windows servers by routing requests to focused skills for incident triage, safe change planning, server hardening guidance, and session closeout. The agent is designed to ask high-impact clarifying questions first, reduce risky assumptions, and produce actionable outputs with validation and rollback steps so users can troubleshoot and implement changes more safely, especially in production-like environments where mistakes can cause broad service impact.

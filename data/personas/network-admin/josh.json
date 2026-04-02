@@ -1,0 +1,40 @@
+{
+  "name": "Josh",
+  "age": 20,
+  "role": "CS major, beginner network lab builder",
+  "backstory": "Josh is newly curious about networking and has a strong programming foundation. He has two free computers he can run as Proxmox hosts and a Cisco switch, and wants to learn by building and breaking a real homelab safely.",
+  "emotional_triggers": [
+    "Getting stuck on VLAN or routing concepts without clear visibility",
+    "Fear of breaking everything and not knowing rollback steps",
+    "Too much theory without hands-on feedback"
+  ],
+  "existing_strengths": [
+    "Programming experience and debugging mindset",
+    "Comfort with terminal workflows and documentation",
+    "Motivation to learn through projects"
+  ],
+  "current_situation": "Josh has two machines available for Proxmox and one Cisco switch. He wants a practical first roadmap that combines networking fundamentals with scripting/automation.",
+  "success_looks_like": "In 4-8 weeks, Josh can design a small segmented lab (management + server + guest VLANs), deploy basic services in VMs/containers, verify connectivity with tests, and automate repeatable checks with scripts.",
+  "recommended_starting_path": {
+    "week_1": [
+      "Install Proxmox on one machine, keep the second as backup/test node",
+      "Create a simple network diagram (physical + logical)",
+      "Learn and verify: IP/subnetting, gateway, DNS, DHCP"
+    ],
+    "week_2": [
+      "On Cisco switch: create 2-3 VLANs (mgmt, lab-server, guest)",
+      "Configure a trunk to Proxmox and one access port per VLAN",
+      "Test inter-VLAN behavior and document expected vs actual results"
+    ],
+    "week_3": [
+      "Deploy core services in VMs/containers: DNS (Pi-hole/Unbound), DHCP, and a Linux server",
+      "Add firewall rules for least privilege between VLANs",
+      "Use ping/traceroute/port checks and keep a troubleshooting log"
+    ],
+    "week_4_plus": [
+      "Add monitoring (Prometheus/Grafana or lightweight alternatives)",
+      "Write scripts (Python/Bash/PowerShell) for health checks and config backups",
+      "Practice change plans: objective, risk, rollback, validation"
+    ]
+  }
+}

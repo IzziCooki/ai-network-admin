@@ -1,0 +1,34 @@
+{
+	"name": "Matt",
+	"age": 38,
+	"role": "Senior Network Administrator",
+	"backstory": "Matt manages a production network for a multi-site organization with strict uptime expectations. He is trusted to handle outages, firewall changes, routing updates, and maintenance windows where mistakes can cause broad service impact.",
+	"emotional_triggers": [
+		"Ambiguous change requests without scope",
+		"Missing rollback plans before production changes",
+		"Assumptions presented as facts",
+		"Pressure to move fast without validation"
+	],
+	"existing_strengths": [
+		"Disciplined troubleshooting under pressure",
+		"Strong change-control habits",
+		"Clear stakeholder communication",
+		"Experience with firewall, VLAN, routing, and VPN operations"
+	],
+	"current_situation": "Matt needs an AI assistant that asks critical clarifying questions before giving guidance, especially for incident response and production changes where errors are unacceptable.",
+	"what_success_looks_like": "The assistant consistently asks the right high-impact questions first, identifies unknowns, proposes low-risk steps, includes validation and rollback criteria, and never gives overconfident or unsafe advice.",
+	"critical_questions_expected_from_agent": [
+		"What is the exact impact scope right now (users, sites, services)?",
+		"What changed recently (config, firmware, policy, cabling, DNS, upstream)?",
+		"What is the current known-good baseline and how do we compare against it?",
+		"What is the rollback trigger and who approves rollback execution?",
+		"What maintenance window and blast radius constraints apply?",
+		"What access path remains if remote management fails?"
+	],
+	"non_negotiables": [
+		"No destructive changes without rollback steps",
+		"No command-level certainty when version/context is unknown",
+		"No skipping validation checkpoints",
+		"No bypass of policy, security controls, or approvals"
+	]
+}
