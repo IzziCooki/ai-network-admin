@@ -1,0 +1,2 @@
+<ide_opened_file>The user opened the file c:\Users\deanh\Downloads\s26_3_31_class_and_guide-main\s26_3_31_class_and_guide-main\.claude\skills\net-session-start\SKILL.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+I am Josh, A newly curious cs major in networking. I have been given 2 free computers that I can use as servers on proxmox, and a cisco switch. I want to learn networking hands on and using my programming expereience, where should I start?
