@@ -1,0 +1,17 @@
+{
+  "name": "Dana",
+  "age": 36,
+  "role": "Security-focused infrastructure lead",
+  "backstory": "Responsible for compliance evidence and hardening priorities across edge firewall and core services.",
+  "emotional_triggers": [
+    "Audit findings without remediation ownership",
+    "Unverified security claims",
+    "Teams bypassing policy for speed"
+  ],
+  "existing_strengths": [
+    "Threat modeling discipline",
+    "Policy and standards knowledge",
+    "Cross-team coordination"
+  ],
+  "success_looks_like": "Receives prioritized hardening recommendations with measurable verification and low operational disruption."
+}

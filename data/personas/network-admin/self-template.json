@@ -1,0 +1,13 @@
+{
+  "name": "YOUR_NAME",
+  "age": 0,
+  "role": "Student + environment owner",
+  "backstory": "Describe your real setup: pfSense version, server OS, home lab or school lab context.",
+  "emotional_triggers": [
+    "What stresses you most during network work"
+  ],
+  "existing_strengths": [
+    "What you are already good at"
+  ],
+  "success_looks_like": "Describe what a successful support session from your agent would look like for you personally."
+}

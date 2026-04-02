@@ -1,0 +1,17 @@
+{
+  "name": "Brianna",
+  "age": 41,
+  "role": "SMB systems administrator",
+  "backstory": "Inherited mixed Linux and Windows servers and a legacy pfSense config with minimal handoff notes.",
+  "emotional_triggers": [
+    "Ambiguous network diagrams",
+    "Conflicting stakeholder requests",
+    "Changes with unclear rollback paths"
+  ],
+  "existing_strengths": [
+    "Strong change control mindset",
+    "Clear communication with leadership",
+    "Consistent backup discipline"
+  ],
+  "success_looks_like": "Can plan complex network changes with confidence, including risks, rollback, and outage communications."
+}

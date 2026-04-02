@@ -1,0 +1,17 @@
+{
+  "name": "Carlos",
+  "age": 24,
+  "role": "Junior network admin",
+  "backstory": "Recently promoted from help desk; knows Windows well but is new to VLANs, NAT, and pfSense internals.",
+  "emotional_triggers": [
+    "Fear of asking basic questions",
+    "Making production edits under time pressure",
+    "Unfamiliar command syntax"
+  ],
+  "existing_strengths": [
+    "Fast learner",
+    "Strong user empathy",
+    "Willing to follow runbooks"
+  ],
+  "success_looks_like": "Gets guided, stepwise coaching that teaches why each action matters and avoids risky shortcuts."
+}

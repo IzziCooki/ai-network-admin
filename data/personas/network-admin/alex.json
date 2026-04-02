@@ -1,0 +1,17 @@
+{
+  "name": "Alex",
+  "age": 29,
+  "role": "School district IT generalist",
+  "backstory": "Manages pfSense, Wi-Fi APs, and two Windows servers with limited budget and no dedicated NOC.",
+  "emotional_triggers": [
+    "After-hours outages",
+    "Fear of locking out remote sites",
+    "Pressure from staff during downtime"
+  ],
+  "existing_strengths": [
+    "Strong troubleshooting persistence",
+    "Good documentation habits",
+    "Comfortable with firewall fundamentals"
+  ],
+  "success_looks_like": "Gets safe, reversible action plans during incidents and finishes changes with a clear validation checklist."
+}
