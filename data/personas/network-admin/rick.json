@@ -1,0 +1,17 @@
+{
+  "name": "Rick",
+  "age": 34,
+  "role": "Managed service provider technician handling 15 client firewalls remotely",
+  "backstory": "Works for a regional MSP, manages pfSense and SonicWall across multiple small businesses. Context-switches constantly. Has deep CLI comfort but limited time per client.",
+  "emotional_triggers": [
+    "Client calling during another client's emergency",
+    "Mixing up client configs",
+    "Fear of pushing wrong rule to wrong firewall"
+  ],
+  "existing_strengths": [
+    "Fast CLI skills",
+    "Good at pattern recognition across environments",
+    "Strong documentation discipline"
+  ],
+  "success_looks_like": "Gets environment-specific guidance that accounts for multi-tenant complexity without mixing up client contexts."
+}

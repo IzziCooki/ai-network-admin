@@ -26,6 +26,7 @@ from evaluate import (
     get_precomputed_scores,
     get_rubric_definitions,
     evaluate_conversation,
+    is_network_admin_conversation,
 )
 
 
@@ -157,18 +158,20 @@ def main():
     print(BANNER)
 
     conversations = load_conversations()
-    rubrics = get_rubric_definitions()
     all_results = []
     output_dir = Path(__file__).parent / "results"
 
     for conv_id, conv in conversations.items():
+        agent_type = "Network Admin" if is_network_admin_conversation(conv_id) else "Mindful Consumption"
+        rubrics = get_rubric_definitions(conv_id)
+
         print(f"\n{'=' * 58}")
         print(f"  EVALUATING: {conv.get('name', conv_id)}")
-        print(f"  Persona: {conv.get('persona', 'unknown')}")
+        print(f"  Persona: {conv.get('persona', 'unknown')}  |  Agent: {agent_type}")
         print(f"{'=' * 58}")
 
         # Structural metrics (always automatic)
-        structural = run_structural(conv)
+        structural = run_structural(conv, conv_id)
         print_structural(structural)
 
         # Rubric scores

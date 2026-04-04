@@ -8,8 +8,8 @@ Loads conversations, runs structural metrics, and collects rubric scores
 import json
 from pathlib import Path
 
-from metrics import compute_all_structural
-from rubrics import RUBRICS, PRECOMPUTED_SCORES
+from metrics import compute_all_structural, compute_all_network_admin
+from rubrics import RUBRICS, NETWORK_ADMIN_RUBRICS, PRECOMPUTED_SCORES
 
 
 def load_conversations(json_path: str | None = None) -> dict:
@@ -20,8 +20,15 @@ def load_conversations(json_path: str | None = None) -> dict:
         return json.load(f)
 
 
-def run_structural(conversation: dict) -> list[dict]:
-    """Run all structural metrics on a conversation."""
+def is_network_admin_conversation(conversation_id: str) -> bool:
+    """Check if a conversation is a network admin conversation."""
+    return conversation_id.startswith("netadmin-")
+
+
+def run_structural(conversation: dict, conversation_id: str = "") -> list[dict]:
+    """Run appropriate structural metrics on a conversation."""
+    if is_network_admin_conversation(conversation_id):
+        return compute_all_network_admin(conversation)
     return compute_all_structural(conversation)
 
 
@@ -30,9 +37,10 @@ def get_precomputed_scores(conversation_id: str) -> dict | None:
     return PRECOMPUTED_SCORES.get(conversation_id)
 
 
-def get_rubric_definitions() -> list[dict]:
+def get_rubric_definitions(conversation_id: str = "") -> list[dict]:
     """Return rubric names and descriptions for display."""
-    return [{"name": r["name"], "description": r["description"]} for r in RUBRICS]
+    rubrics = NETWORK_ADMIN_RUBRICS if is_network_admin_conversation(conversation_id) else RUBRICS
+    return [{"name": r["name"], "description": r["description"]} for r in rubrics]
 
 
 def evaluate_conversation(
@@ -51,7 +59,7 @@ def evaluate_conversation(
     Returns:
         Combined result with structural metrics, rubric scores, and summary.
     """
-    structural = run_structural(conversation)
+    structural = run_structural(conversation, conversation_id)
     summary = compute_summary(structural, rubric_scores)
     return {
         "conversation_id": conversation_id,

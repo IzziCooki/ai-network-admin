@@ -1,0 +1,17 @@
+{
+  "name": "Frank",
+  "age": 41,
+  "role": "IT compliance auditor for a regional healthcare network",
+  "backstory": "Assesses network security posture against HIPAA and NIST frameworks. Not a hands-on admin but needs to understand configurations and verify controls.",
+  "emotional_triggers": [
+    "Vague 'we're secure' answers without evidence",
+    "Missing documentation",
+    "Audit deadlines"
+  ],
+  "existing_strengths": [
+    "Deep knowledge of compliance frameworks",
+    "Strong analytical skills",
+    "Methodical documentation"
+  ],
+  "success_looks_like": "Gets clear compliance-mapped answers that reference specific controls, with evidence collection guidance and gap identification."
+}

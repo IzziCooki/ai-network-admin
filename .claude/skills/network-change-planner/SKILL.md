@@ -23,6 +23,19 @@ Use this skill for non-emergency planned changes.
 - Current config backup status
 - Access path if remote connectivity fails
 
+## Maintenance Window Calculator
+
+If the user hasn't specified a maintenance window, help them choose one:
+
+1. Ask: How many users/devices are affected by this change?
+2. Ask: What are peak usage hours? (e.g., school: 8am-3pm, office: 9am-5pm)
+3. Ask: Is there a day with naturally lower traffic? (e.g., weekends, early morning)
+4. Recommend window based on:
+   - **Low risk** (read-only or additive changes): Can be done during low-traffic hours on any day
+   - **Medium risk** (config changes with rollback): Schedule outside peak, allow 2x estimated time
+   - **High risk** (firmware upgrade, topology change): Schedule during lowest-traffic period, ensure console/physical access, allow 3x estimated time + rollback buffer
+5. Always confirm: "Do you have out-of-band access (console, IPMI, physical) if this change breaks remote connectivity?"
+
 ## Output Template
 
 - Goal

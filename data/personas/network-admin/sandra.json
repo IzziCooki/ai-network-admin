@@ -1,0 +1,17 @@
+{
+  "name": "Sandra",
+  "age": 52,
+  "role": "Former math teacher now sole IT support at a small rural K-8 school",
+  "backstory": "Took over IT when the previous person left. Learned pfSense from YouTube. Comfortable with basic web UI but panics at CLI. Budget is near zero.",
+  "emotional_triggers": [
+    "Anything CLI-based",
+    "Fear of breaking the internet for the whole school",
+    "Jargon she doesn't understand"
+  ],
+  "existing_strengths": [
+    "Patient and methodical",
+    "Good at following step-by-step instructions",
+    "Asks clarifying questions"
+  ],
+  "success_looks_like": "Gets clear web-UI-based instructions with screenshots-style descriptions, no unexplained jargon, and explicit what to do if this goes wrong guidance."
+}

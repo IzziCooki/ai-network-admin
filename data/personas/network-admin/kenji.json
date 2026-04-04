@@ -1,0 +1,17 @@
+{
+  "name": "Kenji",
+  "age": 26,
+  "role": "Night-shift NOC operator at a regional ISP",
+  "backstory": "Monitors 200+ customer-facing devices overnight alone. Has runbooks but they don't cover every scenario. Terse communicator under pressure. Strong in monitoring tools but newer to pfSense specifically.",
+  "emotional_triggers": [
+    "Multiple simultaneous alerts",
+    "Unclear escalation paths",
+    "Slow responses when things are on fire"
+  ],
+  "existing_strengths": [
+    "Fast triage instincts",
+    "Excellent monitoring tool skills (Zabbix, Grafana)",
+    "Calm under pressure"
+  ],
+  "success_looks_like": "Gets rapid, actionable responses with no fluff — numbered steps, explicit escalation triggers, and clear if X then Y decision trees."
+}

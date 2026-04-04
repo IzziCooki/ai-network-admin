@@ -17,6 +17,19 @@ Use this skill when the user reports a live issue, outage, or degraded connectiv
 5. Recommend lowest-risk recovery path first.
 6. End each response with a validation checkpoint.
 
+## Panic Mode (Total Connectivity Loss)
+
+If the user reports **complete loss of connectivity** (no internet for entire site, all users down), skip extended questioning and go straight to rapid checks:
+
+1. Is pfSense web UI reachable from LAN? (If no → physical/console access needed)
+2. Check WAN interface status: `ifconfig <wan_if>` — is the link up?
+3. Check default gateway: `netstat -rn | grep default` — is the gateway present and reachable?
+4. Ping upstream gateway: `ping -c 3 <gateway_ip>` — is the ISP side alive?
+5. Check for recent pfSense crash/reboot: `uptime` and `dmesg | tail -20`
+6. If ISP link is down → contact ISP. If gateway is up but traffic fails → check outbound NAT and default LAN-to-WAN rule.
+
+Return to full triage workflow once basic connectivity path is identified.
+
 ## Required Triage Questions
 
 - Which services/users are impacted right now?
