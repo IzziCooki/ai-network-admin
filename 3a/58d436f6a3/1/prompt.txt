@@ -1,0 +1,73 @@
+/net-session-start
+
+---
+
+I just bought a used cisco sg2000 48p switch, how Do i set it upwith pfsense proxmox for multiple vlan setup?
+
+---
+
+1)     2.8.1-RELEASE (amd64) 2)Virtual Environment 9.1.1 3) I have vlan 20 (192.168.2.1) and vlan 30 (192.168.3.1) and just LAN (192.168.1.1)
+
+---
+
+The switch is factory reset, pfsense has a dedicated 3 port nic.
+
+---
+
+Port 1: wan port 2: lan port3: eerowifi
+
+---
+
+The vlans are already configured, pfsnese will use the port 2 for (vlan 20) and port 3(vlan 30)
+
+---
+
+Yes, this is correct
+
+---
+
+Use this converstation as a new personal under the name eric, then add the conversation to the eval
+
+---
+
+python eval/run_eval.py --precomputed
+
+---
+
+run the test and fix the flags given for the converasation for the agent, does this for 3 iterations
+
+---
+
+Word ratio is not that important for the tests, as the AI agent can be explaing details, focus more on tecnical details and accurate safe responses
+
+---
+
+thats ok, however, make rubrics.py revolve arounf network admin stuff and not the emotional agent that used to also be in here
+
+---
+
+python eval/run_eval.py
+
+---
+
+Go through the recent eval named summary-20260404-155403.json and fix the warning and maybe the notes. Then run the eval again and do this process 3 more times.
+
+---
+
+Create more mock conversations revloving around junior and begginr net work admins needing advice and walkthrough of trouble shooting. once the converstaions have been created, run them through the eval process until there are no flags and errors.
+
+---
+
+d
+
+---
+
+make it so when we finish a converstation it gets saved into a folder, this way we can use the converstaions to make the ai better.
+
+---
+
+/net-session-close
+
+---
+
+How could I connect this ai agent to its own web application? Show me the steps dont do anything yet
