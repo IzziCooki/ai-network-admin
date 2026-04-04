@@ -1,0 +1,41 @@
+look through the results of summary-20260404-123847.json and correct the ai for the flags. Once you fix the flags, rerun the eval and see the flags again. Do this for 3 iterations.
+
+---
+
+Create 5 more personas that repersent real world network admin experiences and then use those to run through the interation 5 more times.
+
+---
+
+/vpn-advisor how would I setup a wireguard vpn for my pfsense server to access from anywherem, without chaning dns settings and portforwading for other user?
+
+---
+
+1)
+
+---
+
+1)
+
+---
+
+1)
+
+---
+
+1)2.8.1-RELEASE (amd64) 2) I have a dynamic ip using CGNAT  3) I will connect from my ubuntu laptop and also a windows 11 pc 4) Yes, last time I setup tailscale, steam servers and other games stopped working.
+
+---
+
+I will ask for a static ip, thanks
+
+---
+
+/net-session-close
+
+---
+
+add my network admin aigent details to the claude.md memory
+
+---
+
+Can you remove the mindful consumption agent, I dont want that, only the network admin agent is needed in this project.
