@@ -40,7 +40,7 @@ The agent is implemented entirely as Claude Code skills — markdown files with 
 | `backup-and-recovery` | `.claude/skills/backup-and-recovery/SKILL.md` | Backup verification, restore testing, and disaster recovery planning |
 | `monitoring-setup` | `.claude/skills/monitoring-setup/SKILL.md` | SNMP, Zabbix/LibreNMS/Nagios configuration with alert thresholds |
 | `documentation-generator` | `.claude/skills/documentation-generator/SKILL.md` | Generates change records, incident reports, and runbook entries |
-| `net-session-close` | `.claude/skills/net-session-close/SKILL.md` | Session closer — decision summary, action checklist, verification reminders |
+| `net-session-close` | `.claude/skills/net-session-close/SKILL.md` | Session closer — decision summary, action checklist, verification reminders, saves conversation log |
 
 Routing logic lives in `net-session-start`. Network admin skills follow a safety-first pattern: triage impact, confirm environment, gather evidence, recommend lowest-risk fix, include validation steps, and provide rollback procedures.
 
@@ -55,6 +55,10 @@ JSON files representing test users for network admin scenarios. Skills are desig
 | Diane Olsen | `diane.json` | Plant IT manager, inherited undocumented network | New VLAN for production floor equipment |
 | Yusuf Abdi | `yusuf.json` | Non-profit IT, zero budget, wears all hats | Captive portal broken after pfSense upgrade |
 | Chen Wei | `chen_wei.json` | Hospital network engineer, HIPAA compliance | IoT medical device segmentation for audit |
+
+### Saved Conversations (`data/conversations/`)
+
+JSON logs of completed network admin sessions, saved automatically by `net-session-close`. Each file contains the full turn-by-turn conversation in the same format as `eval/sample_conversations.json`, so conversations can be moved into the eval pipeline directly. Files are named `YYYY-MM-DD-<topic-slug>.json`.
 
 ### Experiments (`experiments/`)
 

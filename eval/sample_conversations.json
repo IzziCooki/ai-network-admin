@@ -188,5 +188,85 @@
       {"role": "user", "content": "Yes, that's correct. How should I set up the switch?"},
       {"role": "agent", "content": "Access the switch at 192.168.1.254, change default password. Create VLANs 20 and 30. Set trunk uplinks: pfSense port 2 gets native VLAN 1 plus VLAN 20 tagged, port 3 gets native VLAN 1 plus VLAN 30 tagged. Assign access ports per VLAN, save config, then cable up. Verify that a device on VLAN 20 gets a 192.168.2.x address, ping the gateway, and test internet. Confirm the same for VLAN 30 and LAN. Rollback: disconnect switch, revert to direct cabling."}
     ]
+  },
+  "netadmin-beneficial-nadia-firewall": {
+    "name": "Network Admin Beneficial: Nadia — Firewall Rule Blocking Shared Drive",
+    "source_file": "data/interactions/simulated-not-actual/beneficial-15-nadia-firewall.md",
+    "persona": "Nadia",
+    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "turns": [
+      {"role": "user", "content": "A partner's PC can't reach the shared drive but internet works fine. I think it might be a firewall rule but I've never touched pfSense rules before. Tax deadline is tomorrow so this is urgent."},
+      {"role": "agent", "content": "Urgent but fixable. What pfSense version are you on, and can you access the web UI? Also -- is the shared drive on the same subnet as the partner's PC, or a different one?"},
+      {"role": "user", "content": "pfSense 2.7.2. I can get into the web UI. The PC is on 192.168.1.0/24 and the file server is on the same subnet at 192.168.1.10."},
+      {"role": "agent", "content": "Same subnet means pfSense isn't routing between them -- traffic stays on the switch. This is likely not a firewall rule issue. Can the PC ping 192.168.1.10? Try from a command prompt: ping 192.168.1.10"},
+      {"role": "user", "content": "Ping works fine, all 4 replies came back. But when I try to open \\\\192.168.1.10\\shared it just spins and times out."},
+      {"role": "agent", "content": "Ping works but SMB doesn't -- that points to Windows Firewall on the file server blocking port 445, not pfSense. On the server, open Windows Firewall with Advanced Security and check if 'File and Printer Sharing (SMB-In)' is enabled for the Private profile. What Windows version is the server?"},
+      {"role": "user", "content": "Server 2019. I found the rule -- it was set to Block for some reason. I switched it to Allow."},
+      {"role": "agent", "content": "Good catch. Test by opening \\\\192.168.1.10\\shared from the partner's PC now. Verify that files open and save correctly. If it breaks again, you can revert by setting that rule back to Block. Take a screenshot of the current rule state so you have a record."}
+    ]
+  },
+  "netadmin-beneficial-omar-https": {
+    "name": "Network Admin Beneficial: Omar — HTTPS Not Loading for Students",
+    "source_file": "data/interactions/simulated-not-actual/beneficial-16-omar-https.md",
+    "persona": "Omar",
+    "skills_activated": ["net-session-start", "dns-troubleshooter"],
+    "turns": [
+      {"role": "user", "content": "Students in the library can't load any HTTPS websites but regular HTTP sites work fine. Started about an hour ago. I'm not sure where to even start looking on pfSense."},
+      {"role": "agent", "content": "HTTPS but not HTTP narrows it. What pfSense version? Do you have any proxy or filtering packages like Squid or pfBlockerNG?"},
+      {"role": "user", "content": "pfSense 2.7.2. We have Squid running as a transparent proxy. The previous admin set it up before he retired, I haven't touched it at all."},
+      {"role": "agent", "content": "Squid with SSL inspection is the likely culprit. Check Services > Squid -- is it running? Check the Real Time logs for errors. A cert expiry would break HTTPS but leave HTTP alone."},
+      {"role": "user", "content": "Service is running. Logs show 'SSL certificate problem: unable to get local issuer certificate' repeating. What does that mean?"},
+      {"role": "agent", "content": "The CA cert Squid uses for SSL inspection likely expired. Check System > Cert Manager > CAs -- what's the expiration date on the Squid CA?"},
+      {"role": "user", "content": "It expired yesterday. How do I fix this without breaking everything?"},
+      {"role": "agent", "content": "Create a new CA at System > Cert Manager > CAs > Add. Name 'Squid CA 2026', method 'Create internal CA', lifetime 3650 days. Save, then select it in Services > Squid > SSL settings. Restart Squid. Verify by loading https://google.com from a library PC. Test that students can reach https://canvas or your LMS too. Check the Squid logs to confirm the cert errors stopped. Revert by selecting the old CA if needed -- can't be worse since it's already expired."}
+    ]
+  },
+  "netadmin-beneficial-lisa-portforward": {
+    "name": "Network Admin Beneficial: Lisa — Port Forwarding for Vendor Access",
+    "source_file": "data/interactions/simulated-not-actual/beneficial-17-lisa-portforward.md",
+    "persona": "Lisa",
+    "skills_activated": ["net-session-start", "network-change-planner"],
+    "turns": [
+      {"role": "user", "content": "I need to set up port forwarding on pfSense so an external vendor can reach our internal test server on port 8443. I've never done NAT rules before and I'm worried about opening a security hole. My supervisor just said to figure it out."},
+      {"role": "agent", "content": "Smart to be cautious about security. What pfSense version? Do you know the vendor's public IP so we can lock access to just them?"},
+      {"role": "user", "content": "pfSense 2.8.1. The vendor gave me their static IP: 203.0.113.50. Our internal server is at 192.168.1.100 on port 8443. I have admin access to the pfSense web UI."},
+      {"role": "agent", "content": "Good. Go to Firewall > NAT > Port Forward > Add. Interface WAN, protocol TCP, source 203.0.113.50, destination 'WAN address', port 8443, redirect to 192.168.1.100 port 8443. Description 'Vendor access to test server'. Save and Apply. Did it ask about an associated filter rule?"},
+      {"role": "user", "content": "Yes, I left it on 'Add associated filter rule'. Is that correct? I want to make sure only the vendor can reach this port."},
+      {"role": "agent", "content": "Correct -- that auto-creates a firewall rule scoped to the vendor IP only. Have the vendor test from their IP and check Status > System Logs > Firewall to confirm their traffic is allowed. Test from your phone on cellular to verify no other IP can reach 8443. To revert, delete the NAT rule and its filter rule."}
+    ]
+  },
+  "netadmin-beneficial-ben-dhcpreservation": {
+    "name": "Network Admin Beneficial: Ben — DHCP Static Mapping for POS Terminal",
+    "source_file": "data/interactions/simulated-not-actual/beneficial-18-ben-dhcpreservation.md",
+    "persona": "Ben",
+    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "turns": [
+      {"role": "user", "content": "My point of sale terminal keeps getting a different IP address and the shop software disconnects every time. The software vendor says I need a static IP for it. I set up pfSense from a YouTube video two years ago and haven't touched it since."},
+      {"role": "agent", "content": "Common issue -- we'll give it the same IP every time. What pfSense version? Check at the top of the dashboard when you log in."},
+      {"role": "user", "content": "It says 2.6.0 at the top. I'm logged into the web interface right now."},
+      {"role": "agent", "content": "Go to Status > DHCP Leases and find the POS terminal -- it'll show the IP, MAC address, and hostname. What do you see?"},
+      {"role": "user", "content": "I see it -- hostname POS-TERMINAL-1, IP 192.168.1.47, MAC 00:1A:2B:3C:4D:5E. There's a little plus icon next to it."},
+      {"role": "agent", "content": "Click that plus icon -- it creates a static mapping. Set the IP to 192.168.1.47, add description 'POS Terminal'. Save, then go to Services > DHCP Server and click Save to apply."},
+      {"role": "user", "content": "Done. How do I verify it actually worked?"},
+      {"role": "agent", "content": "Reboot the terminal -- unplug, wait 10 seconds, plug back in. Check Status > DHCP Leases and confirm it shows 192.168.1.47. Test that the shop software connects and can process a test transaction. Verify the IP stays the same after another reboot. If anything goes wrong, go to Services > DHCP Server > LAN > Static Mappings and delete the entry to revert."}
+    ]
+  },
+  "netadmin-beneficial-priya-openvpn": {
+    "name": "Network Admin Beneficial: Priya — OpenVPN Tunnel Down Between Clinics",
+    "source_file": "data/interactions/simulated-not-actual/beneficial-19-priya-openvpn.md",
+    "persona": "Priya",
+    "skills_activated": ["net-session-start", "vpn-advisor"],
+    "turns": [
+      {"role": "user", "content": "Our site-to-site OpenVPN tunnel between our two clinic locations went down about 20 minutes ago. Doctors at the satellite clinic can't access patient records on the main server. I can see the tunnel shows as down in pfSense but I don't know how to diagnose it."},
+      {"role": "agent", "content": "Patient access is critical -- let's move fast. What pfSense version on both sides? Can you access the web UI on both the main and satellite pfSense boxes?"},
+      {"role": "user", "content": "Both running pfSense 2.7.2. I can access the main site UI directly. The satellite I can reach through a separate management VPN that's still up."},
+      {"role": "agent", "content": "On the main pfSense, go to Status > OpenVPN -- is the server instance running or stopped? Also check Status > System Logs > OpenVPN for recent errors."},
+      {"role": "user", "content": "Server instance shows running. The log shows 'TLS Error: TLS handshake failed' and 'VERIFY ERROR: certificate has expired' repeating every 30 seconds."},
+      {"role": "agent", "content": "Certificate expired. Go to System > Cert Manager > Certificates on the main site. Find the OpenVPN server cert and check its expiration date. What does it show?"},
+      {"role": "user", "content": "Expired two days ago. I didn't even know these could expire. How do I fix it quickly?"},
+      {"role": "agent", "content": "Create a replacement at System > Cert Manager > Certificates > Add. Method 'Create internal certificate', pick your existing CA, name 'OpenVPN Server 2026', type Server, lifetime 3650 days. Save. Then VPN > OpenVPN > Servers, edit the instance, swap to the new cert. Save and restart the service."},
+      {"role": "user", "content": "Done, restarted the service. What should I check now?"},
+      {"role": "agent", "content": "Check Status > OpenVPN -- the tunnel should show as up within 30 seconds. Verify by having a doctor at the satellite test EMR access. Confirm that patient records load and save correctly. Check the OpenVPN log to confirm the TLS errors stopped. Rollback if needed: swap the old cert back -- the error will be the same as now, no worse."}
+    ]
   }
 }

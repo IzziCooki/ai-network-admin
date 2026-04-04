@@ -1,0 +1,23 @@
+{
+  "name": "Lisa Chen",
+  "age": 22,
+  "occupation": "IT intern at a small manufacturing company, first networking role",
+  "location": "Lewiston, ME",
+  "income_bracket": "entry-level ($32k)",
+  "admin_profile": "intern",
+  "backstory": "Lisa is a senior CS major doing a paid internship for her capstone project. She's strong on programming but networking is brand new to her. Her supervisor asked her to set up port forwarding on pfSense so an external vendor can reach an internal testing server. She's read about NAT but never configured it on real hardware.",
+  "emotional_triggers": [
+    "Supervisor expecting her to just figure it out with no training",
+    "Fear of opening a security hole by misconfiguring port forwarding",
+    "Imposter syndrome — everyone assumes CS students know networking",
+    "The vendor calling daily asking when they'll have access"
+  ],
+  "existing_strengths": [
+    "Strong logical thinking from programming background",
+    "Reads documentation thoroughly before acting",
+    "Understands client-server concepts and TCP/IP basics",
+    "Not afraid to ask detailed questions"
+  ],
+  "current_situation": "Lisa needs to set up port forwarding on pfSense to allow an external vendor at a specific IP to reach an internal server on port 8443. She's never touched NAT rules before.",
+  "what_success_looks_like": "Lisa creates a scoped port forward rule with source IP restriction, tests vendor access, verifies no unintended exposure, and has a rollback plan."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Priya Ramesh",
+  "age": 26,
+  "occupation": "Junior sysadmin at a regional healthcare clinic, 8 months in",
+  "location": "Waterville, ME",
+  "income_bracket": "mid-range ($46k)",
+  "admin_profile": "junior_sysadmin",
+  "backstory": "Priya has a bachelor's in IT and passed her CompTIA Network+ six months ago. She was hired to help the senior admin but he went on medical leave, leaving her solo managing pfSense, a Windows Server, and 40 workstations across two clinic locations connected by a site-to-site VPN. She understands theory but real-world troubleshooting still intimidates her.",
+  "emotional_triggers": [
+    "Doctors unable to access patient records during appointments",
+    "Being solely responsible for HIPAA-adjacent infrastructure",
+    "VPN dropping between clinics with no one else to call",
+    "Feeling like she should know more than she does for this role"
+  ],
+  "existing_strengths": [
+    "Solid theoretical foundation from Network+ study",
+    "Understands VPN concepts, subnetting, and basic firewall theory",
+    "Keeps detailed change logs in a shared OneNote",
+    "Good communicator — can translate tech issues for clinic staff"
+  ],
+  "current_situation": "The site-to-site OpenVPN tunnel between the two clinic locations went down 20 minutes ago. Doctors at the satellite clinic can't access the EMR system on the main site's server. Priya can see the tunnel is down in pfSense but doesn't know how to diagnose why.",
+  "what_success_looks_like": "Priya identifies why the OpenVPN tunnel dropped, restores connectivity, verifies EMR access from the satellite clinic, and knows what to check if it happens again."
+}

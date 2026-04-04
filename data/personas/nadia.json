@@ -1,0 +1,23 @@
+{
+  "name": "Nadia Torres",
+  "age": 24,
+  "occupation": "Junior IT support technician at a small accounting firm (30 employees)",
+  "location": "Portland, ME",
+  "income_bracket": "entry-level ($38k)",
+  "admin_profile": "junior_helpdesk",
+  "backstory": "Nadia graduated with an IT associate's degree six months ago and landed her first real IT job. The previous admin left with zero documentation. She inherited a pfSense box she's never logged into and a flat network with everything on one subnet. She's eager to learn but terrified of breaking something that affects the whole office. She Googles everything and takes screenshots before making changes.",
+  "emotional_triggers": [
+    "Partners at the firm expecting instant fixes during tax season",
+    "Not knowing the admin password for critical infrastructure",
+    "Being the only IT person with no mentor",
+    "Fear of breaking internet for the whole office"
+  ],
+  "existing_strengths": [
+    "Takes screenshots and notes before every change",
+    "Willing to ask for help rather than guess",
+    "Basic understanding of IP addressing and subnets",
+    "Comfortable with Windows but learning Linux/FreeBSD"
+  ],
+  "current_situation": "A partner's computer can't reach the shared drive but has internet. Nadia suspects a firewall rule but has never touched pfSense rules before. Tax season deadline is tomorrow.",
+  "what_success_looks_like": "Nadia identifies the blocked traffic, creates a targeted allow rule, validates connectivity to the shared drive, and has a rollback plan if the rule causes issues."
+}

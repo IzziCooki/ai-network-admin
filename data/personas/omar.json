@@ -1,0 +1,23 @@
+{
+  "name": "Omar Hassan",
+  "age": 27,
+  "occupation": "Desktop support tech promoted to network admin at a community college",
+  "location": "Bangor, ME",
+  "income_bracket": "mid-range ($48k)",
+  "admin_profile": "recently_promoted",
+  "backstory": "Omar spent three years on the helpdesk resetting passwords and reimaging laptops. Last month the network admin retired and Omar was promoted because he was the most technical person left. He can navigate pfSense's web UI but has never configured routing, NAT, or firewall rules from scratch. He's studying for his CCNA at night.",
+  "emotional_triggers": [
+    "Faculty complaining about slow WiFi during lectures",
+    "Being expected to know things the previous admin never documented",
+    "Fear of making a change that takes down the campus network",
+    "Budget requests getting denied by administration"
+  ],
+  "existing_strengths": [
+    "Solid helpdesk troubleshooting methodology — isolate, test, document",
+    "Comfortable with pfSense web UI navigation",
+    "Studying CCNA so he understands subnetting and basic routing concepts",
+    "Good relationship with faculty who report issues early"
+  ],
+  "current_situation": "Students in the library are reporting they can't load any HTTPS websites but HTTP sites work. Omar suspects a DNS or certificate issue but isn't sure where to start on pfSense.",
+  "what_success_looks_like": "Omar identifies the root cause, applies a targeted fix, verifies HTTPS works from a student device, and documents what he did."
+}

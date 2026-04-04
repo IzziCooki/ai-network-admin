@@ -1,0 +1,23 @@
+{
+  "name": "Ben Kowalski",
+  "age": 29,
+  "occupation": "Small business owner who does his own IT for a 10-person auto repair shop",
+  "location": "Augusta, ME",
+  "income_bracket": "small-business ($55k personal)",
+  "admin_profile": "diy_owner",
+  "backstory": "Ben runs an auto repair shop and installed pfSense himself after watching a YouTube tutorial. It's been working fine for two years but he has no idea what most of the settings do. He just knows not to touch anything. Now his shop management software vendor says he needs to set up a static IP mapping for their point-of-sale terminal and he's lost.",
+  "emotional_triggers": [
+    "Customers waiting while the POS system is down",
+    "Paying a consultant $150/hr for something that should be simple",
+    "Fear of breaking the internet for the whole shop",
+    "Not understanding networking jargon"
+  ],
+  "existing_strengths": [
+    "Practical problem solver — fixes cars, can follow step-by-step instructions",
+    "Patient and methodical when given clear directions",
+    "Has physical access to all equipment",
+    "Willing to learn if explanations are in plain language"
+  ],
+  "current_situation": "Ben's POS terminal keeps getting different IP addresses from DHCP and the shop management software loses connection each time. The vendor says he needs a static IP for the terminal. Ben doesn't know what a DHCP reservation is.",
+  "what_success_looks_like": "Ben creates a DHCP static mapping for the POS terminal's MAC address, the terminal gets the same IP every time, and the shop software stays connected."
+}
