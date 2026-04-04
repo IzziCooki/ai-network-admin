@@ -1,18 +1,16 @@
 {
   "cli_version": "0.5.2",
   "checkpoint_id": "b9e026872773",
+  "session_id": "3a3efd08-bd5e-4982-a3e0-f0893aba4f85",
   "strategy": "manual-commit",
+  "created_at": "2026-04-04T19:58:19.5949531Z",
   "branch": "main",
-  "checkpoints_count": 2,
+  "checkpoints_count": 1,
   "files_touched": [
-    ".claude/skills/dns-troubleshooter/SKILL.md",
-    ".claude/skills/log-analyzer/SKILL.md",
     ".claude/skills/net-session-start/SKILL.md",
     ".claude/skills/network-change-planner/SKILL.md",
     ".claude/skills/pfsense-triage/SKILL.md",
     ".claude/skills/server-hardening-advisor/SKILL.md",
-    ".claude/skills/vpn-advisor/SKILL.md",
-    ".claude/skills/want-examination/SKILL.md",
     "eval/results/result-beneficial-01-maya.json",
     "eval/results/result-experiment-maya-1.json",
     "eval/results/result-netadmin-beneficial-alex-triage.json",
@@ -23,28 +21,28 @@
     "eval/results/result-unhelpful-02-dismissive.json",
     "eval/rubrics.py",
     "eval/run_eval.py",
-    "eval/sample_conversations.json",
-    "experiments/maya-1.md"
+    "eval/sample_conversations.json"
   ],
-  "sessions": [
-    {
-      "metadata": "/b9/e026872773/0/metadata.json",
-      "transcript": "/b9/e026872773/0/full.jsonl",
-      "content_hash": "/b9/e026872773/0/content_hash.txt",
-      "prompt": "/b9/e026872773/0/prompt.txt"
-    },
-    {
-      "metadata": "/b9/e026872773/1/metadata.json",
-      "transcript": "/b9/e026872773/1/full.jsonl",
-      "content_hash": "/b9/e026872773/1/content_hash.txt",
-      "prompt": "/b9/e026872773/1/prompt.txt"
-    }
-  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "cfb9f862c686",
   "token_usage": {
-    "input_tokens": 52,
-    "cache_creation_tokens": 90539,
-    "cache_read_tokens": 2130443,
-    "output_tokens": 27540,
-    "api_call_count": 39
+    "input_tokens": 50,
+    "cache_creation_tokens": 82824,
+    "cache_read_tokens": 2119174,
+    "output_tokens": 27486,
+    "api_call_count": 38
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-04T19:58:19.2495898Z",
+    "agent_lines": 0,
+    "human_added": 5517,
+    "human_modified": 1466,
+    "human_removed": 0,
+    "total_committed": 6983,
+    "agent_percentage": 0
   }
 }
