@@ -1,0 +1,5 @@
+look through the results of summary-20260404-123847.json and correct the ai for the flags. Once you fix the flags, rerun the eval and see the flags again. Do this for 3 iterations.
+
+---
+
+/net-session-start
