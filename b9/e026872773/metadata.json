@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "b9e026872773",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/skills/dns-troubleshooter/SKILL.md",
+    ".claude/skills/log-analyzer/SKILL.md",
+    ".claude/skills/net-session-start/SKILL.md",
+    ".claude/skills/network-change-planner/SKILL.md",
+    ".claude/skills/pfsense-triage/SKILL.md",
+    ".claude/skills/server-hardening-advisor/SKILL.md",
+    ".claude/skills/vpn-advisor/SKILL.md",
+    ".claude/skills/want-examination/SKILL.md",
+    "eval/results/result-beneficial-01-maya.json",
+    "eval/results/result-experiment-maya-1.json",
+    "eval/results/result-netadmin-beneficial-alex-triage.json",
+    "eval/results/result-netadmin-beneficial-kenji-dns.json",
+    "eval/results/result-netadmin-beneficial-rick-multiclient.json",
+    "eval/results/result-netadmin-beneficial-sandra-logs.json",
+    "eval/results/result-unhelpful-01-preachy.json",
+    "eval/results/result-unhelpful-02-dismissive.json",
+    "experiments/maya-1.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/b9/e026872773/0/metadata.json",
+      "transcript": "/b9/e026872773/0/full.jsonl",
+      "content_hash": "/b9/e026872773/0/content_hash.txt",
+      "prompt": "/b9/e026872773/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 2,
+    "cache_creation_tokens": 7715,
+    "cache_read_tokens": 11269,
+    "output_tokens": 54,
+    "api_call_count": 1
+  }
+}

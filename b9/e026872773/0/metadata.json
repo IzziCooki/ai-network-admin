@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "b9e026872773",
+  "session_id": "2ef137cd-1d2c-4ff7-935a-bcc9e8d57a26",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-04T19:58:19.0293707Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/skills/dns-troubleshooter/SKILL.md",
+    ".claude/skills/log-analyzer/SKILL.md",
+    ".claude/skills/net-session-start/SKILL.md",
+    ".claude/skills/network-change-planner/SKILL.md",
+    ".claude/skills/pfsense-triage/SKILL.md",
+    ".claude/skills/server-hardening-advisor/SKILL.md",
+    ".claude/skills/vpn-advisor/SKILL.md",
+    ".claude/skills/want-examination/SKILL.md",
+    "eval/results/result-beneficial-01-maya.json",
+    "eval/results/result-experiment-maya-1.json",
+    "eval/results/result-netadmin-beneficial-alex-triage.json",
+    "eval/results/result-netadmin-beneficial-kenji-dns.json",
+    "eval/results/result-netadmin-beneficial-rick-multiclient.json",
+    "eval/results/result-netadmin-beneficial-sandra-logs.json",
+    "eval/results/result-unhelpful-01-preachy.json",
+    "eval/results/result-unhelpful-02-dismissive.json",
+    "experiments/maya-1.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "39fca6704d73",
+  "token_usage": {
+    "input_tokens": 2,
+    "cache_creation_tokens": 7715,
+    "cache_read_tokens": 11269,
+    "output_tokens": 54,
+    "api_call_count": 1
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-04T19:58:18.9799112Z",
+    "agent_lines": 0,
+    "human_added": 5639,
+    "human_modified": 1039,
+    "human_removed": 0,
+    "total_committed": 6549,
+    "agent_percentage": 0
+  }
+}
