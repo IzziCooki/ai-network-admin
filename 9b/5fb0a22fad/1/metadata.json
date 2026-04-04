@@ -1,0 +1,44 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "9b5fb0a22fad",
+  "session_id": "e2db4335-038c-4418-8763-9aaaa5eafc85",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-04T16:30:05.5299019Z",
+  "branch": "main",
+  "checkpoints_count": 9,
+  "files_touched": [
+    ".claude/skills/net-session-start/SKILL.md",
+    ".claude/skills/network-change-planner/SKILL.md",
+    ".claude/skills/pfsense-triage/SKILL.md",
+    ".claude/skills/server-hardening-advisor/SKILL.md",
+    "eval/evaluate.py",
+    "eval/metrics.py",
+    "eval/results/result-beneficial-01-maya.json",
+    "eval/results/result-experiment-maya-1.json",
+    "eval/rubrics.py",
+    "eval/run_eval.py",
+    "eval/sample_conversations.json"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "d59490dfc08f",
+  "token_usage": {
+    "input_tokens": 69,
+    "cache_creation_tokens": 39596,
+    "cache_read_tokens": 1714573,
+    "output_tokens": 13942,
+    "api_call_count": 53
+  },
+  "session_metrics": {
+    "turn_count": 9
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-04T16:30:05.2019658Z",
+    "agent_lines": 0,
+    "human_added": 1834,
+    "human_modified": 1632,
+    "human_removed": 0,
+    "total_committed": 3466,
+    "agent_percentage": 0
+  }
+}

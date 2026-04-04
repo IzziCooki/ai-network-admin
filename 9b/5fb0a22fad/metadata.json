@@ -3,7 +3,7 @@
   "checkpoint_id": "9b5fb0a22fad",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 3,
+  "checkpoints_count": 12,
   "files_touched": [
     ".claude/skills/backup-and-recovery/SKILL.md",
     ".claude/skills/dns-troubleshooter/SKILL.md",
@@ -53,13 +53,19 @@
       "transcript": "/9b/5fb0a22fad/0/full.jsonl",
       "content_hash": "/9b/5fb0a22fad/0/content_hash.txt",
       "prompt": "/9b/5fb0a22fad/0/prompt.txt"
+    },
+    {
+      "metadata": "/9b/5fb0a22fad/1/metadata.json",
+      "transcript": "/9b/5fb0a22fad/1/full.jsonl",
+      "content_hash": "/9b/5fb0a22fad/1/content_hash.txt",
+      "prompt": "/9b/5fb0a22fad/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 50,
-    "cache_creation_tokens": 82824,
-    "cache_read_tokens": 2119174,
-    "output_tokens": 27486,
-    "api_call_count": 38
+    "input_tokens": 119,
+    "cache_creation_tokens": 122420,
+    "cache_read_tokens": 3833747,
+    "output_tokens": 41428,
+    "api_call_count": 91
   }
 }

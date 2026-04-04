@@ -1,0 +1,39 @@
+/net-session-start
+
+---
+
+I want to monitor the logs of my pihole server running on dhauser@192.168.1.12 password: 1000 (dont worry about password strength for now) Check for any devices that have been on nsfw website within the past 8 hours, then create a script I can call and use whenever.
+
+---
+
+PS C:\Users\deanh> ssh-keygen -t ed25519 -f ~/.ssh/pihole_key -N "" && cat ~/.ssh/pihole_key.pub | ssh dhauser@192.168.1.12 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+At line:1 char:50
++ ssh-keygen -t ed25519 -f ~/.ssh/pihole_key -N "" && cat ~/.ssh/pihole ...
++                                                  ~~
+The token '&&' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+---
+
+I am on a windows 11 device
+
+---
+
+That worked
+
+---
+
+put the scripts in the .openclaw/workbench/ on the dhauser@192.168.2.5 device
+
+---
+
+Yup same pass
+
+---
+
+did it
+
+---
+
+Can you now create a network monitor script that returns all the devices that have been on the internet in the past 4 hours and shows the types of search websites they were on. This will also go in .openclaw/workspace (not workbench)
