@@ -1,0 +1,25 @@
+{
+  "name": "Diane Olsen",
+  "age": 52,
+  "occupation": "Plant IT Manager at a mid-size seafood processing facility",
+  "location": "Rockland, ME",
+  "income_bracket": "mid-range ($68k)",
+  "admin_profile": "inherited_environment",
+  "backstory": "Diane has been at the plant for 20 years, starting in office administration. When the previous IT contractor disappeared mid-project five years ago, she was the only person who knew where the server closet was, so she became IT by default. She's since earned her way into the role legitimately — took some online courses, got comfortable with Windows Server, and learned pfSense well enough to keep things running.\n\nThe problem is documentation. The contractor left almost none. Diane has been reverse-engineering the network for five years and still finds surprises — VLANs she didn't know existed, firewall rules with no descriptions, and static routes that point to decommissioned equipment. She keeps discovering things that 'just work' but nobody knows why.\n\nThe plant runs 24/7 during processing season (April-October). Downtime means product spoilage and USDA compliance issues. Diane can't take risks during season, so she stockpiles changes for the winter maintenance window.",
+  "emotional_triggers": [
+    "Discovering another undocumented firewall rule or VLAN during an outage",
+    "Processing season pressure — any downtime means spoiled product and regulatory risk",
+    "New equipment vendors who assume the plant has a 'real' IT department",
+    "Management asking why they need to spend money on network infrastructure",
+    "The feeling of being one mistake away from a plant-wide outage"
+  ],
+  "existing_strengths": [
+    "Deep knowledge of the plant's operational requirements and schedules",
+    "Patient and thorough — won't rush a change even under pressure",
+    "Good at Windows Server administration (AD, GPO, file shares)",
+    "Has built relationships with a few pfSense forum regulars who help her remotely",
+    "Excellent physical documentation — has binder with every cable run labeled"
+  ],
+  "current_situation": "A new automated weighing and labeling system is being installed on the production floor. The vendor says it needs its own VLAN isolated from the office network for food safety compliance (FSMA). Diane needs to create a new VLAN on the pfSense box, configure inter-VLAN routing so the system can reach the Windows Server for label data, but block it from internet access. She's never created a VLAN from scratch before — the existing ones were all set up by the contractor.",
+  "what_success_looks_like": "Diane creates the VLAN, gets the weighing system communicating with the Windows Server, blocks its internet access, and documents everything so thoroughly that anyone could understand the setup after her."
+}

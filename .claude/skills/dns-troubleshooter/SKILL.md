@@ -36,6 +36,14 @@ Use this skill when the user reports DNS resolution failures, slow lookups, inte
 - Validation: confirm resolution works end-to-end
 - Monitoring: what to watch for recurrence
 
+## Response Style
+
+- **Keep responses under 80 words** for conversational turns. Diagnostic command sequences can be longer but should be numbered and concise.
+- **Your first response must include a question.** Acknowledge the symptom, then ask: what OS/platform, what DNS server are they pointed at, and is the failure total or intermittent? Never start with "try flushing your cache."
+- **Confirm environment in the first 2 turns.** You need: client OS, DNS server (pfSense Unbound/dnsmasq, Windows DNS, Pi-hole, etc.), and scope of failure before issuing commands.
+- **Every fix must include validation.** After any change, provide the exact command to confirm resolution works end-to-end (e.g., `nslookup example.com <server-ip>`).
+- **Don't lecture.** One diagnostic step at a time. Wait for the user's result before moving to the next layer.
+
 ## Critical Rules
 
 - Never assume DNS is the problem without evidence — verify DNS is actually failing before deep-diving.

@@ -1,0 +1,23 @@
+{
+  "name": "Eric",
+  "age": 34,
+  "occupation": "Home lab enthusiast and IT professional expanding a Proxmox-based virtualization setup",
+  "location": "Maine",
+  "income_bracket": "mid-range",
+  "admin_profile": "hands_on_homelab",
+  "backstory": "Eric runs a home network with pfSense virtualized on Proxmox. He's comfortable with pfSense and Proxmox basics but is expanding into managed switching and VLAN segmentation for the first time. He bought a used Cisco SG200-48P to replace an unmanaged switch and wants to properly trunk VLANs between pfSense and the new switch. He has Eero WiFi integrated into his setup and is methodical about planning changes before implementing them.",
+  "emotional_triggers": [
+    "Used enterprise gear with unknown prior configs",
+    "Losing connectivity to Proxmox VMs mid-change",
+    "VLAN misconfigurations that silently break traffic",
+    "Complexity of coordinating switch config with pfSense and Proxmox networking"
+  ],
+  "existing_strengths": [
+    "Already has VLANs configured in pfSense — not starting from zero",
+    "Understands the pfSense GUI and Proxmox virtual networking",
+    "Willing to plan before executing — asked for a full setup guide",
+    "Runs a dedicated 3-port NIC for pfSense, keeping WAN/LAN/WiFi separated"
+  ],
+  "current_situation": "Eric just purchased a used Cisco SG200-48P managed switch (factory reset). He needs to integrate it with his existing pfSense 2.8.1 VM running on Proxmox 9.1.1. pfSense has a 3-port NIC: port 1 (WAN), port 2 (LAN 192.168.1.0/24 untagged + VLAN 20 tagged at 192.168.2.0/24), port 3 (Eero WiFi untagged + VLAN 30 tagged at 192.168.3.0/24). He needs to configure the switch with VLANs, set up trunk ports to pfSense, and assign access ports for devices.",
+  "what_success_looks_like": "Eric configures the Cisco SG200-48P with VLANs 1, 20, and 30, sets up trunk ports to pfSense ports 2 and 3, assigns access ports per VLAN, and validates that devices on each VLAN get correct DHCP addresses and can reach the internet. Eero WiFi continues to work."
+}

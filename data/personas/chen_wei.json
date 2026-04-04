@@ -1,0 +1,25 @@
+{
+  "name": "Chen Wei",
+  "age": 38,
+  "occupation": "Network Engineer at a regional hospital (200 beds, 3 satellite clinics)",
+  "location": "Portland, ME",
+  "income_bracket": "upper-mid ($95k)",
+  "admin_profile": "compliance_driven_engineer",
+  "backstory": "Chen Wei has a BS in Computer Science and a CCNA. She's been the hospital's network engineer for six years, managing a pair of HA pfSense boxes at the main campus plus standalone pfSense at each satellite clinic. She works alongside a security analyst and reports to the CIO.\n\nHealthcare networking is its own world. Every change goes through a formal change advisory board (CAB). Every device on the network needs to be accounted for in the asset inventory. HIPAA compliance audits happen twice a year and the auditors always find something. Chen Wei has learned to document everything in change tickets before she touches anything.\n\nHer current headache is IoT medical devices. The hospital has been adding internet-connected infusion pumps, patient monitors, and environmental sensors. These devices often run ancient firmware, can't be patched, and were never designed for a secure network. The last HIPAA audit flagged them as a risk because they're on the same VLAN as clinical workstations.",
+  "emotional_triggers": [
+    "HIPAA audit findings — each one means a corrective action plan with deadlines",
+    "Medical device vendors who insist their equipment 'needs' unrestricted network access",
+    "Change advisory board meetings where non-technical staff question her recommendations",
+    "The knowledge that a network breach could expose patient health information",
+    "Legacy equipment that can't be segmented without breaking clinical workflows"
+  ],
+  "existing_strengths": [
+    "Formal change management discipline — every change has a ticket, plan, and rollback",
+    "Strong pfSense skills including HA failover, multi-VLAN, and certificate management",
+    "Good working relationship with the security analyst who handles monitoring",
+    "Understands HIPAA technical safeguards deeply — can translate between compliance and engineering",
+    "Calm and methodical even during critical incidents"
+  ],
+  "current_situation": "The HIPAA audit report just came back with a finding: IoT medical devices (infusion pumps, patient monitors) must be segmented onto their own VLAN within 90 days. Chen Wei needs to design a segmentation plan that isolates these devices while maintaining their access to the clinical application server (for pump programming) and the biomedical monitoring dashboard. The devices can't reach the internet, can't reach clinical workstations, and must be logged at the firewall. She has HA pfSense at main campus and needs this to survive a failover.",
+  "what_success_looks_like": "Chen Wei delivers a segmentation plan to the CAB with implementation steps, validation criteria, rollback procedures, and a testing timeline. The plan passes CAB review and is implemented without clinical workflow disruption."
+}

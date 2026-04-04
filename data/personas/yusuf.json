@@ -1,0 +1,25 @@
+{
+  "name": "Yusuf Abdi",
+  "age": 35,
+  "occupation": "IT Manager at a community non-profit (workforce development center)",
+  "location": "Lewiston, ME",
+  "income_bracket": "modest ($48k)",
+  "admin_profile": "nonprofit_multirole",
+  "backstory": "Yusuf came to Maine as a refugee from Somalia at age 12 and grew up in Lewiston. After getting his associate's degree in IT, he started volunteering at the workforce development center that had helped his family. When their part-time IT person left, Yusuf stepped in full-time. He now manages everything: the network, the computer lab, the phone system, the website, and staff laptops.\n\nThe center serves about 200 clients a week across job training, ESL classes, and citizenship prep. They have a computer lab with 30 desktops, staff WiFi, and a guest WiFi network for clients. The whole thing runs on a pfSense box donated by a local MSP, a used Cisco switch, and a lot of improvisation. Budget for IT is essentially zero unless Yusuf can write it into a grant.\n\nYusuf is good at making things work with nothing, but he worries about security. The center handles sensitive client data (immigration documents, SSNs for job applications) and he knows the network isn't properly segmented. He's been reading about VLANs and captive portals but hasn't had time to implement them.",
+  "emotional_triggers": [
+    "Data breach anxiety — the center stores immigration documents and SSNs",
+    "Grant reporting deadlines that eat into his IT maintenance time",
+    "Staff who share passwords and plug personal devices into the network",
+    "The feeling of being one person responsible for everything technical",
+    "Board members who don't understand that 'the internet works' doesn't mean 'we're secure'"
+  ],
+  "existing_strengths": [
+    "Resourceful — expert at making donated/surplus equipment work",
+    "Bilingual (Somali/English) — can support clients directly",
+    "Strong relationship with the local MSP that donated the pfSense box",
+    "Reads pfSense documentation thoroughly before attempting changes",
+    "Genuinely cares about protecting client data — takes security personally"
+  ],
+  "current_situation": "The center's captive portal for guest WiFi stopped redirecting — clients connect to the WiFi but get a browser error instead of the acceptable use page. Staff WiFi still works fine. Yusuf recently updated pfSense from 2.6.0 to 2.7.2 and suspects the upgrade broke something, but he's not sure what. The ESL class starts in 2 hours and the instructor needs guest WiFi for the lesson plan.",
+  "what_success_looks_like": "Yusuf gets the captive portal working again before the ESL class, understands what the upgrade changed, and documents the fix so he can handle it faster next time."
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Marco Reyes",
+  "age": 26,
+  "occupation": "Junior Network Technician at a managed service provider (MSP), 18 months in",
+  "location": "Bangor, ME",
+  "income_bracket": "entry-level ($42k)",
+  "admin_profile": "msp_junior_tech",
+  "backstory": "Marco graduated from a community college networking program and landed his first real job at a 6-person MSP that manages firewalls and servers for about 40 small businesses across central Maine. He has his CompTIA Network+ and is studying for his Security+. He handles tier-1 and tier-2 tickets and is starting to get trusted with pfSense changes under supervision.\n\nHis biggest anxiety is making a change on the wrong client's firewall — the MSP uses a jump box to reach all client pfSense instances, and the hostnames aren't always labeled clearly. He once accidentally applied a firewall rule to Client B's box when he meant Client A, and his boss had to do an emergency rollback. He's been triple-checking ever since.\n\nHe's fast with CLI and comfortable with SSH, but his experience with complex NAT scenarios and VPN troubleshooting is still developing. He tends to Google error messages and follow the first forum post he finds, which sometimes leads him astray.",
+  "emotional_triggers": [
+    "On-call pages at 2 AM for a client site he's never touched before",
+    "Senior tech being unavailable when he hits something he doesn't understand",
+    "Client owners who call the MSP directly to complain instead of opening a ticket",
+    "Imposter syndrome when peers discuss protocols he hasn't encountered",
+    "Fear of repeating the wrong-client-firewall mistake"
+  ],
+  "existing_strengths": [
+    "Strong CLI skills — comfortable with SSH, dig, traceroute, tcpdump",
+    "Follows ticketing discipline — documents what he does in ConnectWise",
+    "Asks for help before making irreversible changes (learned from the wrong-client incident)",
+    "Quick learner — picks up new tools and concepts fast",
+    "Good under pressure for his experience level"
+  ],
+  "current_situation": "A client's site-to-site IPsec VPN tunnel between their main office and warehouse keeps dropping every 30-60 minutes. Both sides are pfSense 2.7.2. The tunnel re-establishes on its own but the warehouse loses access to the file server for 2-3 minutes each time. The client is frustrated because inventory staff can't save their work reliably. Marco's senior tech is on vacation and Marco needs to troubleshoot this himself.",
+  "what_success_looks_like": "Marco identifies the root cause (likely DPD settings or phase 2 lifetime mismatch), applies the fix on both ends during a maintenance window, and validates tunnel stability over 24 hours."
+}

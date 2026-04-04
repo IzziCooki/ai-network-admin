@@ -1,0 +1,25 @@
+{
+  "name": "Tamara Wells",
+  "age": 41,
+  "occupation": "IT Coordinator for a rural K-12 school district (3 buildings, ~1,200 students)",
+  "location": "Presque Isle, ME",
+  "income_bracket": "mid-range ($58k)",
+  "admin_profile": "solo_generalist",
+  "backstory": "Tamara started as the high school's computer lab aide and gradually became 'the IT person' for the entire district. She has no formal networking training — everything she knows comes from YouTube, pfSense forums, and late nights after the kids go home. She manages three pfSense boxes (one per building), a Windows Server for Active Directory, and a mix of Chromebooks and Windows desktops. Budget requests go through a school board that doesn't understand why a firewall costs money.\n\nShe's careful and methodical because she learned the hard way: a bad DHCP change two years ago knocked out internet for the entire district during state testing. She still has nightmares about the superintendent's phone call. She always makes backups before changes and keeps a spiral notebook of what she did and when.",
+  "emotional_triggers": [
+    "State testing season — any network hiccup becomes a crisis with the superintendent calling",
+    "Budget meetings where board members question why IT costs anything",
+    "Vendor salespeople who talk over her head and assume she doesn't understand",
+    "Snow days that cause VPN surges she didn't plan for",
+    "Finding undocumented changes from the summer tech intern"
+  ],
+  "existing_strengths": [
+    "Methodical — always backs up configs before changes",
+    "Keeps a physical notebook documenting every change with dates",
+    "Comfortable with pfSense web UI, less so with CLI",
+    "Good relationship with teachers who give her early warning on issues",
+    "Not afraid to say 'I don't know' and ask for help"
+  ],
+  "current_situation": "It's April — state testing starts next week. Teachers are reporting that Chromebooks in the elementary building keep losing their DHCP leases mid-session. The DHCP scope for that building's VLAN was sized for 80 devices but there are now 120 Chromebooks after a grant purchase last month. Tamara needs to expand the scope without disrupting the other two buildings.",
+  "what_success_looks_like": "Tamara expands the DHCP scope safely, validates that devices get addresses in the new range, and has a rollback plan she can execute if something goes wrong during testing week."
+}

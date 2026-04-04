@@ -1,4 +1,11 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python eval/run_eval.py --precomputed)",
+      "Bash(PYTHONIOENCODING=utf-8 python eval/run_eval.py --precomputed)",
+      "Bash(python eval/run_eval.py)"
+    ]
+  },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": false
   }

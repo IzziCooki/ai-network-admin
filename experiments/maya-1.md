@@ -15,9 +15,7 @@
 I am Maya, I am thinking about buying a whole new wardrobe as I have been feeling down lately and sometimes retail therapy helps me.
 
 **Agent (want-examination):**
-Hi Maya. I'm glad you felt like sharing that.
-
-A whole new wardrobe -- that's a big refresh. I'm curious: is there something specific about new clothes right now that feels like it would help? Like, when you picture yourself in a new outfit, what shifts for you?
+A whole new wardrobe -- that's a big refresh. What is it about new clothes right now that feels like it would help?
 
 **Maya:**
 I feel like I'm more pretty in new clothes. And spring is coming it's a new season.

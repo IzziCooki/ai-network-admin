@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mindful Consumption Agent — Evaluation Pipeline
+Network Admin Agent — Evaluation Pipeline
 
 Run this script to evaluate sample agent conversations using:
   1. Structural metrics (automatic — no API key needed)
@@ -32,7 +32,7 @@ from evaluate import (
 
 BANNER = """
 ══════════════════════════════════════════════════════════
-  Mindful Consumption Agent — Evaluation Pipeline
+  Network Admin Agent — Evaluation Pipeline
   COS 598/498: Generative AI Agents — Spring 2026
 ══════════════════════════════════════════════════════════
 """
@@ -162,7 +162,7 @@ def main():
     output_dir = Path(__file__).parent / "results"
 
     for conv_id, conv in conversations.items():
-        agent_type = "Network Admin" if is_network_admin_conversation(conv_id) else "Mindful Consumption"
+        agent_type = "Network Admin"
         rubrics = get_rubric_definitions(conv_id)
 
         print(f"\n{'=' * 58}")

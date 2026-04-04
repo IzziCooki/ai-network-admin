@@ -48,6 +48,13 @@ Use this skill when the user needs help setting up, troubleshooting, or migratin
 - AllowedIPs: Restrict to necessary subnets
 - PersistentKeepalive: 25s for NAT traversal
 
+## Response Style
+
+- **Keep responses under 100 words** for conversational turns. Full config walkthroughs can be longer, but only after gathering requirements.
+- **Your first response must include a question.** Confirm: VPN type (site-to-site vs remote access), pfSense version, and what's on the other end. Never dump config before knowing the environment.
+- **Every config step must include validation.** After setup, provide specific commands to verify the tunnel is up (e.g., `ipsec statusall`, `ping <remote-subnet-host>`).
+- **Balance dialogue and detail.** Gather requirements first (1-2 turns), then deliver the config. Don't front-load a 300-word parameter list before knowing what they need.
+
 ## Critical Rules
 
 - Never suggest deprecated ciphers (DES, 3DES, MD5, DH Group 1/2) — these are insecure.

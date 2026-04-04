@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Is
 
-A teaching artifact for COS 598/498 (Generative AI Agents, Spring 2026, University of Maine). It contains the complete output of a live class demo where a **Mindful Consumption Agent** was prototyped using Claude Code skills — including the skills themselves, test personas, experiment logs, and a Python evaluation pipeline.
+A teaching artifact for COS 598/498 (Generative AI Agents, Spring 2026, University of Maine). It contains a **Network Admin Agent** prototyped using Claude Code skills — including the skills themselves, test personas, experiment logs, and a Python evaluation pipeline.
 
-The agent helps people examine impulse purchases using Socratic questioning, not lecturing. It is not a production system. The purpose is to demonstrate and teach AI agent prototyping.
+The agent helps network administrators safely manage pfSense firewalls, servers, VPNs, and DNS through structured triage, change planning, and validation. It is not a production system. The purpose is to demonstrate and teach AI agent prototyping.
 
 ## Running the Evaluation Pipeline
 
@@ -30,17 +30,31 @@ The agent is implemented entirely as Claude Code skills — markdown files with 
 
 | Skill | File | Role |
 |---|---|---|
-| `session-start` | `.claude/skills/session-start/SKILL.md` | Router — classifies user intent and dispatches to the appropriate skill |
-| `want-examination` | `.claude/skills/want-examination/SKILL.md` | Socratic exploration of a purchase desire |
-| `reframe` | `.claude/skills/reframe/SKILL.md` | Names advertising/persuasion tactics and offers alternatives |
-| `flourishing-prompt` | `.claude/skills/flourishing-prompt/SKILL.md` | Scaled self-care and connection exercises (1, 5, or 10 min) |
-| `gratitude-inventory` | `.claude/skills/gratitude-inventory/SKILL.md` | Session closer — reflection on what's already good |
+| `net-session-start` | `.claude/skills/net-session-start/SKILL.md` | Router — classifies network admin intent and dispatches to the appropriate skill |
+| `pfsense-triage` | `.claude/skills/pfsense-triage/SKILL.md` | Impact-first triage for pfSense and network incidents |
+| `dns-troubleshooter` | `.claude/skills/dns-troubleshooter/SKILL.md` | Structured DNS debugging (resolution chain, cache, forwarders, split-horizon) |
+| `vpn-advisor` | `.claude/skills/vpn-advisor/SKILL.md` | IPsec, OpenVPN, and WireGuard configuration guidance with validation |
+| `network-change-planner` | `.claude/skills/network-change-planner/SKILL.md` | Safe change planning with prerequisites, risk controls, rollback |
+| `log-analyzer` | `.claude/skills/log-analyzer/SKILL.md` | Parse pfSense, syslog, and Windows Event Log for patterns and errors |
+| `server-hardening-advisor` | `.claude/skills/server-hardening-advisor/SKILL.md` | Practical hardening for pfSense-adjacent Linux/Windows servers |
+| `backup-and-recovery` | `.claude/skills/backup-and-recovery/SKILL.md` | Backup verification, restore testing, and disaster recovery planning |
+| `monitoring-setup` | `.claude/skills/monitoring-setup/SKILL.md` | SNMP, Zabbix/LibreNMS/Nagios configuration with alert thresholds |
+| `documentation-generator` | `.claude/skills/documentation-generator/SKILL.md` | Generates change records, incident reports, and runbook entries |
+| `net-session-close` | `.claude/skills/net-session-close/SKILL.md` | Session closer — decision summary, action checklist, verification reminders |
 
-Routing logic lives entirely in `session-start`. The other skills define their own transition points (e.g., `want-examination` transitions to `reframe` if social pressure is mentioned, or to `flourishing-prompt` if the purchase is clearly a coping mechanism).
+Routing logic lives in `net-session-start`. Network admin skills follow a safety-first pattern: triage impact, confirm environment, gather evidence, recommend lowest-risk fix, include validation steps, and provide rollback procedures.
 
 ### Personas (`data/personas/`)
 
-JSON files representing test users: `maya.json`, `david.json`, `priya.json`, `jordan.json`. When role-playing a test session, load the persona by telling Claude Code "I am [Name]" and providing the context from the file. Skills are designed to read persona context silently — they never reference the file directly to the user.
+JSON files representing test users for network admin scenarios. Skills are designed to read persona context silently — they never reference the file directly to the user.
+
+| Persona | File | Profile | Scenario |
+|---|---|---|---|
+| Tamara Wells | `tamara.json` | School district IT coordinator, self-taught | DHCP scope exhaustion before state testing |
+| Marco Reyes | `marco.json` | MSP junior tech, 18 months in | IPsec VPN tunnel dropping every 30-60 min |
+| Diane Olsen | `diane.json` | Plant IT manager, inherited undocumented network | New VLAN for production floor equipment |
+| Yusuf Abdi | `yusuf.json` | Non-profit IT, zero budget, wears all hats | Captive portal broken after pfSense upgrade |
+| Chen Wei | `chen_wei.json` | Hospital network engineer, HIPAA compliance | IoT medical device segmentation for audit |
 
 ### Experiments (`experiments/`)
 
@@ -53,8 +67,10 @@ Pure Python, no external dependencies:
 - `run_eval.py` — entry point; handles CLI args and output formatting
 - `evaluate.py` — orchestrator; loads conversations, runs metrics, collects scores
 - `metrics.py` — structural metric functions (question ratio, response length, harmful pattern detection, etc.)
-- `rubrics.py` — rubric definitions for 6 dimensions (empathy, non-judgmental tone, Socratic approach, relevance, task completion, safety) plus precomputed scores
-- `sample_conversations.json` — test dataset (~10 conversations)
+- `rubrics.py` — rubric definitions with 5 dimensions (safety, accuracy, triage quality, completeness, tone) plus precomputed scores
+- `sample_conversations.json` — test dataset (~17 conversations: beneficial + unhelpful examples)
+
+Conversations with IDs prefixed `netadmin-` automatically use the network admin metrics and rubrics. The structural metrics include: question ratio, response length, word ratio, first turn question, command safety, environment tracking, validation steps, and harmful patterns.
 
 Results are written to `eval/results/`.
 
@@ -65,6 +81,15 @@ Results are written to `eval/results/`.
 - **Commit after each iteration** — the git history documents the design process.
 - **Experiments go in `experiments/`** — one file per test session or planned change.
 - When updating a skill based on experiment findings, use the plan file in `experiments/` as the spec and verify all existing exercises are preserved.
+
+### Network Admin Agent Design Principles
+
+- **Safety first**: Never suggest destructive commands without rollback. Confirm access levels before providing CLI commands.
+- **Environment before advice**: Ask about pfSense version, OS, and access method in the first response. Commands differ across versions.
+- **Validation is mandatory**: Every change recommendation must include specific verification steps (ping, nslookup, test connectivity, check logs).
+- **Concise responses**: Keep agent turns under 100 words. Balance questions and instructions — aim for 40-67% of turns containing a question (avoids both lecturing and interrogation).
+- **Word ratio discipline**: Agent should not dominate the conversation. Target < 2.0x user word count for beneficial interactions.
+- **Rollback always**: Every change must have an explicit revert path. "Delete the rule you just added" is better than "undo the change."
 
 ## Prototyping Process
 

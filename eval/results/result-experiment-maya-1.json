@@ -4,27 +4,27 @@
   "structural_metrics": [
     {
       "metric": "question_ratio",
-      "value": 1.0,
-      "flag": "NOTE: Agent asks questions in almost every turn \u2014 may feel like an interrogation"
+      "value": 0.83,
+      "flag": null
     },
     {
       "metric": "questions_per_turn",
-      "value": 1.5,
+      "value": 1.0,
       "flag": null
     },
     {
       "metric": "response_length",
       "value": {
-        "mean": 60.2,
-        "max": 110,
-        "long_turns": 1
+        "mean": 18.8,
+        "max": 23,
+        "long_turns": 0
       },
-      "flag": "WARNING: 1 response(s) over 100 words \u2014 possible monologuing"
+      "flag": null
     },
     {
       "metric": "word_ratio",
-      "value": 5.73,
-      "flag": "WARNING: Agent dominates conversation (3x+ more words than user)"
+      "value": 1.4,
+      "flag": null
     },
     {
       "metric": "first_turn_question",
@@ -48,13 +48,9 @@
   "rubric_scores": {},
   "summary": {
     "avg_rubric_score": 0.0,
-    "total_flags": 3,
-    "warnings": 2,
-    "flag_details": [
-      "NOTE: Agent asks questions in almost every turn \u2014 may feel like an interrogation",
-      "WARNING: 1 response(s) over 100 words \u2014 possible monologuing",
-      "WARNING: Agent dominates conversation (3x+ more words than user)"
-    ]
+    "total_flags": 0,
+    "warnings": 0,
+    "flag_details": []
   },
   "source_file": "experiments/maya-1.md"
 }
