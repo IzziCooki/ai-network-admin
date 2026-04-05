@@ -5,7 +5,16 @@
   "branch": "main",
   "checkpoints_count": 3,
   "files_touched": [
+    ".claude/settings.json",
+    ".claude/skills/admin-session-start/SKILL.md",
     ".claude/skills/net-session-start/SKILL.md",
+    "CLAUDE.md",
+    "data/conversations/2026-04-04-dean-ollama-gpu-setup.json",
+    "data/conversations/2026-04-04-eric-vlan-switch-and-eval-pipeline.json",
+    "data/conversations/2026-04-04-grace-nextcloud-502-after-upgrade.json",
+    "data/conversations/2026-04-04-raj-jellyfin-docker-transcoding.json",
+    "data/conversations/2026-04-04-tyler-nextcloud-cloudflare-tunnel.json",
+    "eval/results/summary-20260404-203444.json",
     "eval/sample_conversations.json"
   ],
   "sessions": [
@@ -26,6 +35,12 @@
       "transcript": "/47/b6143edcb6/2/full.jsonl",
       "content_hash": "/47/b6143edcb6/2/content_hash.txt",
       "prompt": "/47/b6143edcb6/2/prompt.txt"
+    },
+    {
+      "metadata": "/47/b6143edcb6/3/metadata.json",
+      "transcript": "/47/b6143edcb6/3/full.jsonl",
+      "content_hash": "/47/b6143edcb6/3/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
