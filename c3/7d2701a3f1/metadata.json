@@ -3,14 +3,18 @@
   "checkpoint_id": "c37d2701a3f1",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     ".claude/skills/net-session-start/SKILL.md",
     ".claude/skills/want-examination/SKILL.md",
+    "eval/metrics.py",
     "eval/results/result-beneficial-01-maya.json",
     "eval/results/result-experiment-maya-1.json",
     "eval/results/result-unhelpful-01-preachy.json",
     "eval/results/result-unhelpful-02-dismissive.json",
+    "eval/results/summary-20260404-120443.json",
+    "eval/results/summary-20260404-120658.json",
+    "eval/sample_conversations.json",
     "experiments/maya-1.md"
   ],
   "sessions": [
@@ -19,13 +23,19 @@
       "transcript": "/c3/7d2701a3f1/0/full.jsonl",
       "content_hash": "/c3/7d2701a3f1/0/content_hash.txt",
       "prompt": "/c3/7d2701a3f1/0/prompt.txt"
+    },
+    {
+      "metadata": "/c3/7d2701a3f1/1/metadata.json",
+      "transcript": "/c3/7d2701a3f1/1/full.jsonl",
+      "content_hash": "/c3/7d2701a3f1/1/content_hash.txt",
+      "prompt": "/c3/7d2701a3f1/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 2,
-    "cache_creation_tokens": 7715,
-    "cache_read_tokens": 11269,
-    "output_tokens": 54,
-    "api_call_count": 1
+    "input_tokens": 52,
+    "cache_creation_tokens": 90539,
+    "cache_read_tokens": 2130443,
+    "output_tokens": 27540,
+    "api_call_count": 39
   }
 }
