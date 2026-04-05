@@ -12,7 +12,7 @@
       "Task",
       "WebFetch",
       "WebSearch",
-      "Edit(/.claude/skills/net-session-start/**)",
+      "Edit(/.claude/skills/admin-session-start/**)",
       "Edit(/.claude/skills/sysadmin-triage/**)",
       "Edit(/.claude/skills/service-deployment/**)",
       "Edit(/.claude/skills/reverse-proxy-advisor/**)"

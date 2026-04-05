@@ -3,7 +3,7 @@
   "name": "Raj — Jellyfin Docker Hardware Transcoding Not Working",
   "date": "2026-04-04",
   "persona": "Raj",
-  "skills_activated": ["net-session-start", "service-deployment"],
+  "skills_activated": ["admin-session-start", "service-deployment"],
   "topic": "Jellyfin Docker container starts but hardware transcoding fails with permission errors on Intel GPU",
   "outcome": "resolved",
   "turns": [

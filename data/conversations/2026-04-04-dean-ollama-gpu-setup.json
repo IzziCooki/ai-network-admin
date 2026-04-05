@@ -3,7 +3,7 @@
   "name": "Dean — Ollama GPU Setup on Ubuntu VM with Open WebUI",
   "date": "2026-04-04",
   "persona": "Dean",
-  "skills_activated": ["net-session-start", "sysadmin-triage", "service-deployment"],
+  "skills_activated": ["admin-session-start", "sysadmin-triage", "service-deployment"],
   "topic": "Install Nvidia drivers, Nvidia Container Toolkit, Ollama with GPU acceleration, and Open WebUI on Ubuntu 24.04 VM with GTX 1650",
   "outcome": "resolved",
   "turns": [

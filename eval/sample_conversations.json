@@ -3,7 +3,7 @@
     "name": "Network Admin Beneficial: Alex — pfSense Alias Triage",
     "source_file": "data/interactions/simulated-not-actual/beneficial-04-alex-pfsense-triage.md",
     "persona": "Alex",
-    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "skills_activated": ["admin-session-start", "pfsense-triage"],
     "turns": [
       {"role": "user", "content": "I am Alex. Internet dropped for one school building right after I changed a firewall alias. Other buildings are fine."},
       {"role": "agent", "content": "Let's triage. Who is impacted and are internal resources still reachable? What pfSense version?"},
@@ -17,7 +17,7 @@
     "name": "Network Admin Beneficial: Sandra — Log Analysis",
     "source_file": "data/interactions/simulated-not-actual/beneficial-06-sandra-log-analysis.md",
     "persona": "Sandra",
-    "skills_activated": ["net-session-start", "log-analyzer"],
+    "skills_activated": ["admin-session-start", "log-analyzer"],
     "turns": [
       {"role": "user", "content": "I keep seeing 'default deny' messages in my pfSense logs. I don't know what they mean. Here are some lines:\nMar 31 08:14:22 pfsense filterlog: 5,,,1000000103,em1,match,block,in,4,0x0,,128,12345,0,none,17,udp,78,192.168.1.105,8.8.8.8,54321,53,58"},
       {"role": "agent", "content": "Device 192.168.1.105 is trying DNS to 8.8.8.8 and getting blocked -- no rule allows it. What pfSense version? Do you know which device that is? Check Status > DHCP Leases."},
@@ -29,7 +29,7 @@
     "name": "Network Admin Beneficial: Kenji — DNS Outage",
     "source_file": "data/interactions/simulated-not-actual/beneficial-07-kenji-dns-outage.md",
     "persona": "Kenji",
-    "skills_activated": ["net-session-start", "dns-troubleshooter"],
+    "skills_activated": ["admin-session-start", "dns-troubleshooter"],
     "turns": [
       {"role": "user", "content": "Multiple customers reporting DNS resolution failures. Started 10 min ago. No changes on our end."},
       {"role": "agent", "content": "Internal resolvers or upstream forwarders? Check: `dig @<your-resolver-ip> example.com` -- return or hang? What pfSense version?"},
@@ -43,7 +43,7 @@
     "name": "Network Admin Beneficial: Rick — Multi-Client VLAN Change",
     "source_file": "data/interactions/simulated-not-actual/beneficial-08-rick-multi-client-change.md",
     "persona": "Rick",
-    "skills_activated": ["net-session-start", "network-change-planner"],
+    "skills_activated": ["admin-session-start", "network-change-planner"],
     "turns": [
       {"role": "user", "content": "Need to add a guest VLAN (VLAN 50) across three client pfSense boxes. Different versions and interface layouts."},
       {"role": "agent", "content": "Multi-client change -- let's isolate each. For each client, I need: pfSense version, interface layout, current VLANs, and switch model. Which client first?"},
@@ -107,7 +107,7 @@
     "name": "Network Admin Beneficial: Tamara — DHCP Scope Exhaustion",
     "source_file": "data/interactions/simulated-not-actual/beneficial-09-tamara-dhcp.md",
     "persona": "Tamara",
-    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "skills_activated": ["admin-session-start", "pfsense-triage"],
     "turns": [
       {"role": "user", "content": "I'm Tamara. Chromebooks in the elementary building keep dropping DHCP leases during class. We added 40 Chromebooks from a grant but the DHCP scope only has 80 addresses. State testing starts Monday."},
       {"role": "agent", "content": "Testing Monday -- let's get this right. What pfSense version is that building running, and what's the current DHCP range and subnet?"},
@@ -121,7 +121,7 @@
     "name": "Network Admin Beneficial: Marco — IPsec VPN Tunnel Drops",
     "source_file": "data/interactions/simulated-not-actual/beneficial-10-marco-vpn.md",
     "persona": "Marco",
-    "skills_activated": ["net-session-start", "vpn-advisor"],
+    "skills_activated": ["admin-session-start", "vpn-advisor"],
     "turns": [
       {"role": "user", "content": "I'm Marco. A client's site-to-site IPsec tunnel between their office and warehouse keeps dropping every 30-60 minutes. Both ends are pfSense 2.7.2. Tunnel re-establishes but warehouse loses file server access for a few minutes each time."},
       {"role": "agent", "content": "Periodic drops with auto-reconnect -- classic lifetime or DPD mismatch. Do you have remote access to both boxes? Check VPN > IPsec on each -- do the Phase 1 and Phase 2 lifetime values match?"},
@@ -135,7 +135,7 @@
     "name": "Network Admin Beneficial: Diane — Production Floor VLAN",
     "source_file": "data/interactions/simulated-not-actual/beneficial-11-diane-vlan.md",
     "persona": "Diane",
-    "skills_activated": ["net-session-start", "network-change-planner"],
+    "skills_activated": ["admin-session-start", "network-change-planner"],
     "turns": [
       {"role": "user", "content": "I'm Diane. I need to create a new VLAN on pfSense for a production floor weighing system. Vendor says it needs isolation from the office network but it still has to reach our Windows Server for label data."},
       {"role": "agent", "content": "Production isolation with selective access -- makes sense. What pfSense version are you on, and which physical interface is the trunk? Any existing VLANs you know of?"},
@@ -149,7 +149,7 @@
     "name": "Network Admin Beneficial: Yusuf — Captive Portal After Upgrade",
     "source_file": "data/interactions/simulated-not-actual/beneficial-12-yusuf-portal.md",
     "persona": "Yusuf",
-    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "skills_activated": ["admin-session-start", "pfsense-triage"],
     "turns": [
       {"role": "user", "content": "I'm Yusuf. Guest WiFi captive portal stopped working after upgrading pfSense from 2.6.0 to 2.7.2. Clients connect but get a browser error instead of the acceptable use page. ESL class starts in 2 hours."},
       {"role": "agent", "content": "Time pressure noted. Which version did you upgrade to exactly, and is the captive portal zone still set to the correct interface in Services > Captive Portal?"},
@@ -163,7 +163,7 @@
     "name": "Network Admin Beneficial: Chen Wei — IoT Medical Device Segmentation",
     "source_file": "data/interactions/simulated-not-actual/beneficial-13-chenwei-segmentation.md",
     "persona": "Chen Wei",
-    "skills_activated": ["net-session-start", "network-change-planner", "server-hardening-advisor"],
+    "skills_activated": ["admin-session-start", "network-change-planner", "server-hardening-advisor"],
     "turns": [
       {"role": "user", "content": "I'm Chen Wei. HIPAA audit flagged our IoT medical devices for being on the same VLAN as clinical workstations. I need a segmentation plan for infusion pumps and patient monitors. Running HA pfSense 2.7.2 at main campus."},
       {"role": "agent", "content": "Audit-driven segmentation -- that means a compliance deadline. How many IoT devices, and do they need access beyond the clinical app server and biomed dashboard? Do you have console access or remote access to both HA nodes?"},
@@ -177,7 +177,7 @@
     "name": "Network Admin Beneficial: Eric — Cisco SG200-48P VLAN Setup with pfSense/Proxmox",
     "source_file": "data/interactions/simulated-not-actual/beneficial-14-eric-vlan-switch.md",
     "persona": "Eric",
-    "skills_activated": ["net-session-start", "network-change-planner"],
+    "skills_activated": ["admin-session-start", "network-change-planner"],
     "turns": [
       {"role": "user", "content": "I just bought a used cisco sg2000 48p switch, how do I set it up with pfsense proxmox for multiple vlan setup?"},
       {"role": "agent", "content": "Great switch for VLANs. What pfSense version, and is it a VM on Proxmox or bare metal? How many NICs?"},
@@ -193,7 +193,7 @@
     "name": "Network Admin Beneficial: Nadia — Firewall Rule Blocking Shared Drive",
     "source_file": "data/interactions/simulated-not-actual/beneficial-15-nadia-firewall.md",
     "persona": "Nadia",
-    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "skills_activated": ["admin-session-start", "pfsense-triage"],
     "turns": [
       {"role": "user", "content": "A partner's PC can't reach the shared drive but internet works fine. I think it might be a firewall rule but I've never touched pfSense rules before. Tax deadline is tomorrow so this is urgent."},
       {"role": "agent", "content": "Urgent but fixable. What pfSense version are you on, and can you access the web UI? Also -- is the shared drive on the same subnet as the partner's PC, or a different one?"},
@@ -209,7 +209,7 @@
     "name": "Network Admin Beneficial: Omar — HTTPS Not Loading for Students",
     "source_file": "data/interactions/simulated-not-actual/beneficial-16-omar-https.md",
     "persona": "Omar",
-    "skills_activated": ["net-session-start", "dns-troubleshooter"],
+    "skills_activated": ["admin-session-start", "dns-troubleshooter"],
     "turns": [
       {"role": "user", "content": "Students in the library can't load any HTTPS websites but regular HTTP sites work fine. Started about an hour ago. I'm not sure where to even start looking on pfSense."},
       {"role": "agent", "content": "HTTPS but not HTTP narrows it. What pfSense version? Do you have any proxy or filtering packages like Squid or pfBlockerNG?"},
@@ -225,7 +225,7 @@
     "name": "Network Admin Beneficial: Lisa — Port Forwarding for Vendor Access",
     "source_file": "data/interactions/simulated-not-actual/beneficial-17-lisa-portforward.md",
     "persona": "Lisa",
-    "skills_activated": ["net-session-start", "network-change-planner"],
+    "skills_activated": ["admin-session-start", "network-change-planner"],
     "turns": [
       {"role": "user", "content": "I need to set up port forwarding on pfSense so an external vendor can reach our internal test server on port 8443. I've never done NAT rules before and I'm worried about opening a security hole. My supervisor just said to figure it out."},
       {"role": "agent", "content": "Smart to be cautious about security. What pfSense version? Do you know the vendor's public IP so we can lock access to just them?"},
@@ -239,7 +239,7 @@
     "name": "Network Admin Beneficial: Ben — DHCP Static Mapping for POS Terminal",
     "source_file": "data/interactions/simulated-not-actual/beneficial-18-ben-dhcpreservation.md",
     "persona": "Ben",
-    "skills_activated": ["net-session-start", "pfsense-triage"],
+    "skills_activated": ["admin-session-start", "pfsense-triage"],
     "turns": [
       {"role": "user", "content": "My point of sale terminal keeps getting a different IP address and the shop software disconnects every time. The software vendor says I need a static IP for it. I set up pfSense from a YouTube video two years ago and haven't touched it since."},
       {"role": "agent", "content": "Common issue -- we'll give it the same IP every time. What pfSense version? Check at the top of the dashboard when you log in."},
@@ -255,7 +255,7 @@
     "name": "Network Admin Beneficial: Priya — OpenVPN Tunnel Down Between Clinics",
     "source_file": "data/interactions/simulated-not-actual/beneficial-19-priya-openvpn.md",
     "persona": "Priya",
-    "skills_activated": ["net-session-start", "vpn-advisor"],
+    "skills_activated": ["admin-session-start", "vpn-advisor"],
     "turns": [
       {"role": "user", "content": "Our site-to-site OpenVPN tunnel between our two clinic locations went down about 20 minutes ago. Doctors at the satellite clinic can't access patient records on the main server. I can see the tunnel shows as down in pfSense but I don't know how to diagnose it."},
       {"role": "agent", "content": "Patient access is critical -- let's move fast. What pfSense version on both sides? Can you access the web UI on both the main and satellite pfSense boxes?"},
@@ -273,7 +273,7 @@
     "name": "Sysadmin Beneficial: Tyler — Nextcloud Cloudflare Tunnel 502",
     "source_file": "data/conversations/2026-04-04-tyler-nextcloud-cloudflare-tunnel.json",
     "persona": "Tyler",
-    "skills_activated": ["net-session-start", "reverse-proxy-advisor"],
+    "skills_activated": ["admin-session-start", "reverse-proxy-advisor"],
     "turns": [
       {"role": "user", "content": "I set up Nextcloud in Docker on my Ubuntu server and it works fine at 192.168.1.50:8080, but when I try to access it through my Cloudflare Tunnel at cloud.mydomain.com I get a 502 Bad Gateway error."},
       {"role": "agent", "content": "Classic tunnel-to-container issue. What Ubuntu version are you on, and is cloudflared running on the same host as Docker or separately? What's the tunnel config pointing to — localhost:8080 or the host IP?"},
@@ -291,7 +291,7 @@
     "name": "Sysadmin Beneficial: Grace — Nextcloud 502 After Unattended Upgrade",
     "source_file": "data/conversations/2026-04-04-grace-nextcloud-502-after-upgrade.json",
     "persona": "Grace",
-    "skills_activated": ["net-session-start", "sysadmin-triage"],
+    "skills_activated": ["admin-session-start", "sysadmin-triage"],
     "turns": [
       {"role": "user", "content": "My Nextcloud server is showing 502 Bad Gateway since this morning. All 5 of my employees can't access their shared files and it's affecting our orders. Nothing was changed on our end — it was working perfectly fine when I left the office yesterday evening."},
       {"role": "agent", "content": "Let's get this back up. What OS and version is the server running? Is Nextcloud installed natively with Apache/Nginx, or in Docker? Can you SSH into the server right now?"},
@@ -307,7 +307,7 @@
     "name": "Sysadmin Beneficial: Raj — Jellyfin Docker Hardware Transcoding",
     "source_file": "data/conversations/2026-04-04-raj-jellyfin-docker-transcoding.json",
     "persona": "Raj",
-    "skills_activated": ["net-session-start", "service-deployment"],
+    "skills_activated": ["admin-session-start", "service-deployment"],
     "turns": [
       {"role": "user", "content": "I'm running Jellyfin in Docker on Ubuntu 24.04 but hardware transcoding isn't working. The container starts fine and I can browse my library, but when I try to play something that needs transcoding it just buffers forever."},
       {"role": "agent", "content": "Sounds like the GPU isn't accessible inside the container. What Ubuntu version, what GPU — Intel iGPU, Nvidia, or AMD? And can you share your docker-compose.yml or the docker run command you used?"},

@@ -30,11 +30,14 @@ The agent is implemented entirely as Claude Code skills — markdown files with 
 
 | Skill | File | Role |
 |---|---|---|
-| `net-session-start` | `.claude/skills/net-session-start/SKILL.md` | Router — classifies network admin intent and dispatches to the appropriate skill |
+| `admin-session-start` | `.claude/skills/admin-session-start/SKILL.md` | Router — classifies intent and dispatches to the appropriate skill |
 | `pfsense-triage` | `.claude/skills/pfsense-triage/SKILL.md` | Impact-first triage for pfSense and network incidents |
 | `dns-troubleshooter` | `.claude/skills/dns-troubleshooter/SKILL.md` | Structured DNS debugging (resolution chain, cache, forwarders, split-horizon) |
 | `vpn-advisor` | `.claude/skills/vpn-advisor/SKILL.md` | IPsec, OpenVPN, and WireGuard configuration guidance with validation |
 | `network-change-planner` | `.claude/skills/network-change-planner/SKILL.md` | Safe change planning with prerequisites, risk controls, rollback |
+| `sysadmin-triage` | `.claude/skills/sysadmin-triage/SKILL.md` | Server troubleshooting — service failures, performance, Docker issues |
+| `service-deployment` | `.claude/skills/service-deployment/SKILL.md` | Deploy self-hosted services (Plex, Nextcloud, Ollama, Docker apps) |
+| `reverse-proxy-advisor` | `.claude/skills/reverse-proxy-advisor/SKILL.md` | Cloudflare Tunnels, Nginx, Caddy, Traefik configuration |
 | `log-analyzer` | `.claude/skills/log-analyzer/SKILL.md` | Parse pfSense, syslog, and Windows Event Log for patterns and errors |
 | `server-hardening-advisor` | `.claude/skills/server-hardening-advisor/SKILL.md` | Practical hardening for pfSense-adjacent Linux/Windows servers |
 | `backup-and-recovery` | `.claude/skills/backup-and-recovery/SKILL.md` | Backup verification, restore testing, and disaster recovery planning |
@@ -42,7 +45,7 @@ The agent is implemented entirely as Claude Code skills — markdown files with 
 | `documentation-generator` | `.claude/skills/documentation-generator/SKILL.md` | Generates change records, incident reports, and runbook entries |
 | `net-session-close` | `.claude/skills/net-session-close/SKILL.md` | Session closer — decision summary, action checklist, verification reminders, saves conversation log |
 
-Routing logic lives in `net-session-start`. Network admin skills follow a safety-first pattern: triage impact, confirm environment, gather evidence, recommend lowest-risk fix, include validation steps, and provide rollback procedures.
+Routing logic lives in `admin-session-start`. Skills follow a safety-first pattern: triage impact, confirm environment, gather evidence, recommend lowest-risk fix, include validation steps, and provide rollback procedures.
 
 ### Personas (`data/personas/`)
 

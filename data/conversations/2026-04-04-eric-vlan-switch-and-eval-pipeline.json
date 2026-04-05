@@ -3,7 +3,7 @@
   "name": "Eric — Cisco SG200-48P VLAN Setup + Eval Pipeline Buildout",
   "date": "2026-04-04",
   "persona": "Eric",
-  "skills_activated": ["net-session-start", "network-change-planner", "net-session-close"],
+  "skills_activated": ["admin-session-start", "network-change-planner", "net-session-close"],
   "topic": "Integrate Cisco SG200-48P with pfSense/Proxmox for multi-VLAN, then build eval pipeline with new personas and conversations",
   "outcome": "resolved",
   "turns": [

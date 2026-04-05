@@ -3,7 +3,7 @@
   "name": "Grace — Nextcloud 502 After Unattended Apt Upgrade",
   "date": "2026-04-04",
   "persona": "Grace",
-  "skills_activated": ["net-session-start", "sysadmin-triage"],
+  "skills_activated": ["admin-session-start", "sysadmin-triage"],
   "topic": "Nextcloud returning 502 errors after unattended-upgrades ran overnight and updated PHP",
   "outcome": "resolved",
   "turns": [

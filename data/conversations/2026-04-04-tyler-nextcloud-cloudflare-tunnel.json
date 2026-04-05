@@ -3,7 +3,7 @@
   "name": "Tyler — Nextcloud Behind Cloudflare Tunnel 502 Error",
   "date": "2026-04-04",
   "persona": "Tyler",
-  "skills_activated": ["net-session-start", "reverse-proxy-advisor"],
+  "skills_activated": ["admin-session-start", "reverse-proxy-advisor"],
   "topic": "Nextcloud accessible locally but returns 502 Bad Gateway through Cloudflare Tunnel",
   "outcome": "resolved",
   "turns": [
