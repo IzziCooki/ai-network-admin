@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "c37d2701a3f1",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/skills/net-session-start/SKILL.md",
+    ".claude/skills/want-examination/SKILL.md",
+    "eval/results/result-beneficial-01-maya.json",
+    "eval/results/result-experiment-maya-1.json",
+    "eval/results/result-unhelpful-01-preachy.json",
+    "eval/results/result-unhelpful-02-dismissive.json",
+    "experiments/maya-1.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/c3/7d2701a3f1/0/metadata.json",
+      "transcript": "/c3/7d2701a3f1/0/full.jsonl",
+      "content_hash": "/c3/7d2701a3f1/0/content_hash.txt",
+      "prompt": "/c3/7d2701a3f1/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 2,
+    "cache_creation_tokens": 7715,
+    "cache_read_tokens": 11269,
+    "output_tokens": 54,
+    "api_call_count": 1
+  }
+}
