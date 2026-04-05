@@ -1,0 +1,42 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "c37d2701a3f1",
+  "session_id": "e2db4335-038c-4418-8763-9aaaa5eafc85",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-05T00:31:06.8202438Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".claude/skills/net-session-start/SKILL.md",
+    ".claude/skills/want-examination/SKILL.md",
+    "eval/metrics.py",
+    "eval/results/result-beneficial-01-maya.json",
+    "eval/results/result-experiment-maya-1.json",
+    "eval/results/result-unhelpful-01-preachy.json",
+    "eval/results/result-unhelpful-02-dismissive.json",
+    "eval/results/summary-20260404-123755.json",
+    "eval/sample_conversations.json"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "bab71b99964d",
+  "token_usage": {
+    "input_tokens": 108,
+    "cache_creation_tokens": 86136,
+    "cache_read_tokens": 3864042,
+    "output_tokens": 22553,
+    "api_call_count": 85
+  },
+  "session_metrics": {
+    "turn_count": 12
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-05T00:31:06.5469205Z",
+    "agent_lines": 0,
+    "human_added": 3639,
+    "human_modified": 790,
+    "human_removed": 0,
+    "total_committed": 4429,
+    "agent_percentage": 0
+  }
+}
