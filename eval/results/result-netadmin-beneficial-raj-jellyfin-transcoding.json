@@ -1,0 +1,69 @@
+{
+  "conversation_id": "netadmin-beneficial-raj-jellyfin-transcoding",
+  "name": "Sysadmin Beneficial: Raj \u00e2\u20ac\u201d Jellyfin Docker Hardware Transcoding",
+  "structural_metrics": [
+    {
+      "metric": "question_ratio",
+      "value": 0.4,
+      "flag": null
+    },
+    {
+      "metric": "response_length",
+      "value": {
+        "mean": 50.2,
+        "max": 65,
+        "long_turns": 0
+      },
+      "flag": null
+    },
+    {
+      "metric": "word_ratio",
+      "value": 1.39,
+      "flag": null
+    },
+    {
+      "metric": "first_turn_question",
+      "value": true,
+      "flag": null
+    },
+    {
+      "metric": "command_safety",
+      "value": {
+        "dangerous_commands": 1,
+        "has_rollback": true,
+        "categories": {
+          "unqualified_sudo": 1
+        }
+      },
+      "flag": "NOTE: Dangerous commands present but rollback language found: unqualified_sudo"
+    },
+    {
+      "metric": "environment_tracking",
+      "value": true,
+      "flag": null
+    },
+    {
+      "metric": "validation_steps",
+      "value": 3,
+      "flag": null
+    },
+    {
+      "metric": "harmful_patterns",
+      "value": {
+        "total": 0,
+        "categories": {}
+      },
+      "flag": null
+    }
+  ],
+  "rubric_scores": {},
+  "summary": {
+    "avg_rubric_score": 0.0,
+    "total_flags": 1,
+    "warnings": 0,
+    "flag_details": [
+      "NOTE: Dangerous commands present but rollback language found: unqualified_sudo"
+    ]
+  },
+  "source_file": "data/conversations/2026-04-04-raj-jellyfin-docker-transcoding.json"
+}

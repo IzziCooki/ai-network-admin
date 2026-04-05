@@ -1,0 +1,21 @@
+{
+  "id": "netadmin-raj-jellyfin-docker-transcoding",
+  "name": "Raj — Jellyfin Docker Hardware Transcoding Not Working",
+  "date": "2026-04-04",
+  "persona": "Raj",
+  "skills_activated": ["net-session-start", "service-deployment"],
+  "topic": "Jellyfin Docker container starts but hardware transcoding fails with permission errors on Intel GPU",
+  "outcome": "resolved",
+  "turns": [
+    {"role": "user", "content": "I'm running Jellyfin in Docker on Ubuntu 24.04 but hardware transcoding isn't working. The container starts fine and I can browse my library, but when I try to play something that needs transcoding it just buffers forever."},
+    {"role": "agent", "content": "Sounds like the GPU isn't accessible inside the container. What Ubuntu version, what GPU — Intel iGPU, Nvidia, or AMD? And can you share your docker-compose.yml or the docker run command you used?"},
+    {"role": "user", "content": "Ubuntu 24.04. Intel i5-8500 so it has Intel UHD 630 iGPU. Here's my compose:\nservices:\n  jellyfin:\n    image: jellyfin/jellyfin\n    ports:\n      - 8096:8096\n    volumes:\n      - ./config:/config\n      - /media:/media"},
+    {"role": "agent", "content": "The compose file is missing GPU passthrough. First, verify the render device exists on the host: `ls -la /dev/dri/`. You should see `renderD128` and `card0`. What's the output?"},
+    {"role": "user", "content": "I see renderD128 and card0. renderD128 shows group 'render' with permissions crw-rw----"},
+    {"role": "agent", "content": "Good, the GPU is there. Two things needed. First, add the device to your compose file under the jellyfin service:\n```\n    devices:\n      - /dev/dri/renderD128:/dev/dri/renderD128\n    group_add:\n      - \"render\"\n```\nThen run `docker compose down && docker compose up -d`. After it starts, verify the device is visible inside: `docker exec jellyfin ls -la /dev/dri/`."},
+    {"role": "user", "content": "Added that and restarted. The device shows up inside the container now. But transcoding still fails — Jellyfin logs show 'Failed to initialize VAAPI'."},
+    {"role": "agent", "content": "The host needs the Intel VAAPI driver so the container can access GPU acceleration. Run `sudo apt install intel-media-va-driver` — this installs the video acceleration driver, non-destructive and safe to remove later with `sudo apt remove intel-media-va-driver`. Then restart: `docker compose down && docker compose up -d`. Verify with `docker exec jellyfin /usr/lib/jellyfin-ffmpeg/vainfo` — it should list VA-API entrypoints."},
+    {"role": "user", "content": "Installed the driver, restarted, and vainfo shows entrypoints now. Transcoding is working — I can see it using the GPU in htop. Thanks!"},
+    {"role": "agent", "content": "Nice. In Jellyfin go to Dashboard > Playback > Transcoding, select VAAPI as acceleration, set device to /dev/dri/renderD128. Enable hardware decoding for H.264, HEVC, and VP9. Verify by playing a file that requires transcoding — check Dashboard > Active Streams shows '(HW)' next to the transcode. If transcoding breaks later, revert by setting acceleration back to 'None' in the same menu."}
+  ]
+}

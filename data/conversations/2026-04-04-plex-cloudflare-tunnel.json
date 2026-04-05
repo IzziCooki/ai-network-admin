@@ -1,0 +1,15 @@
+{
+  "id": "netadmin-dean-plex-cloudflare-tunnel",
+  "name": "Dean — Plex Server Cloudflare Tunnel Fix",
+  "date": "2026-04-04",
+  "persona": "Dean",
+  "skills_activated": [],
+  "topic": "New Ubuntu server at 192.168.1.225 running Plex behind Cloudflare Tunnel not connecting via plex.deanhauser.dev",
+  "outcome": "resolved",
+  "turns": [
+    {"role": "user", "content": "I have set up a new ubuntu server running on 192.168.1.225 I set up a plex server with cloudflare tunnel at plex.deanhauser.dev but when I go on the website, the connection does nothing"},
+    {"role": "agent", "content": "This is a common issue with Plex behind Cloudflare Tunnels. A few things to check:\n\n1. **Tunnel config — websockets and correct origin**: Make sure your tunnel points to http://localhost:32400 (or http://192.168.1.225:32400 if cloudflared runs elsewhere). Enable WebSockets under Additional application settings > Connection.\n\n2. **Plex custom server access URLs**: In Plex Settings > Network > Custom server access URLs, add https://plex.deanhauser.dev. Set Secure connections to Preferred (not Required).\n\n3. **Cloudflare SSL/TLS**: Set SSL/TLS mode to Full (not Full Strict). Make sure the DNS record for plex is proxied.\n\n4. **Test the tunnel**: Run curl -I http://localhost:32400/web on the server and check sudo systemctl status cloudflared.\n\n5. **Cloudflare TOS caveat**: Streaming large video through Cloudflare proxy is a gray area under Section 2.8.\n\nCan you confirm how you set up the tunnel (dashboard vs CLI config) and what exactly happens when you hit plex.deanhauser.dev — blank page, timeout, error?"},
+    {"role": "user", "content": "changing from localhost to the actual IP worked, thanks!"},
+    {"role": "agent", "content": "Glad that fixed it! The tunnel was likely not resolving localhost the way you'd expect. Enjoy the Plex server!"}
+  ]
+}

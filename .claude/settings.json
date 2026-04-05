@@ -12,11 +12,10 @@
       "Task",
       "WebFetch",
       "WebSearch",
-      "Edit(/.claude/skills/session-start/**)",
-      "Edit(/.claude/skills/want-examination/**)",
-      "Edit(/.claude/skills/reframe/**)",
-      "Edit(/.claude/skills/flourishing-prompt/**)",
-      "Edit(/.claude/skills/gratitude-inventory/**)"
+      "Edit(/.claude/skills/net-session-start/**)",
+      "Edit(/.claude/skills/sysadmin-triage/**)",
+      "Edit(/.claude/skills/service-deployment/**)",
+      "Edit(/.claude/skills/reverse-proxy-advisor/**)"
     ],
     "deny": [
       "Read(./.entire/metadata/**)"

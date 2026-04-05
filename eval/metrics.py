@@ -58,7 +58,7 @@ def questions_per_turn(conversation: dict) -> dict[str, Any]:
     """
     Average number of question marks per agent turn.
  
-    The want-examination skill says 'one question at a time.'
+    Agent skills target one focused question at a time.
     Turns with 3+ questions are flagged.
     """
     agent_turns = get_agent_turns(conversation)
@@ -326,6 +326,9 @@ def environment_tracking(conversation: dict) -> dict[str, Any]:
         r"pfsense\s+version", r"running\s+(linux|windows|freebsd)",
         r"do\s+you\s+have\s+(root|admin|sudo)", r"access\s+level",
         r"(remote|console|physical)\s+access", r"what\s+server",
+        r"(ubuntu|debian|centos|rhel)\s+version", r"what\s+ubuntu",
+        r"(docker|compose)\s+(version|installed)", r"can\s+you\s+ssh",
+        r"(installed|deployed)\s+(with|via|using)", r"natively\s+(with|or)",
     ]
 
     agent_turns = get_agent_turns(conversation)

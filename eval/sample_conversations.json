@@ -268,5 +268,57 @@
       {"role": "user", "content": "Done, restarted the service. What should I check now?"},
       {"role": "agent", "content": "Check Status > OpenVPN -- the tunnel should show as up within 30 seconds. Verify by having a doctor at the satellite test EMR access. Confirm that patient records load and save correctly. Check the OpenVPN log to confirm the TLS errors stopped. Rollback if needed: swap the old cert back -- the error will be the same as now, no worse."}
     ]
+  },
+  "netadmin-beneficial-tyler-cloudflare-tunnel": {
+    "name": "Sysadmin Beneficial: Tyler — Nextcloud Cloudflare Tunnel 502",
+    "source_file": "data/conversations/2026-04-04-tyler-nextcloud-cloudflare-tunnel.json",
+    "persona": "Tyler",
+    "skills_activated": ["net-session-start", "reverse-proxy-advisor"],
+    "turns": [
+      {"role": "user", "content": "I set up Nextcloud in Docker on my Ubuntu server and it works fine at 192.168.1.50:8080, but when I try to access it through my Cloudflare Tunnel at cloud.mydomain.com I get a 502 Bad Gateway error."},
+      {"role": "agent", "content": "Classic tunnel-to-container issue. What Ubuntu version are you on, and is cloudflared running on the same host as Docker or separately? What's the tunnel config pointing to — localhost:8080 or the host IP?"},
+      {"role": "user", "content": "Ubuntu 24.04 LTS server. cloudflared is running as a systemd service on the same host as Docker. The tunnel is pointing to http://localhost:8080. I set it up through the Cloudflare Zero Trust dashboard."},
+      {"role": "agent", "content": "Good — Ubuntu 24.04, same host. Check two things. First, SSL mode in Cloudflare dashboard — set it to Full, not Full (Strict). Second, verify cloudflared can reach Nextcloud: run `curl -I http://localhost:8080` on the server. What do you get?"},
+      {"role": "user", "content": "curl gives me HTTP/1.1 200 OK with some Nextcloud headers. SSL mode was set to Full (Strict) which I changed to Full in the Cloudflare dashboard. Waited a couple minutes but still getting 502 Bad Gateway in the browser."},
+      {"role": "agent", "content": "SSL change can take a minute to propagate. Also check: in your Nextcloud config.php, is your tunnel domain in the trusted_domains array? Without it, Nextcloud rejects the request. Verify by running `docker exec nextcloud cat /var/www/html/config/config.php | grep trusted` — confirm that cloud.mydomain.com appears in the list."},
+      {"role": "user", "content": "Found it — the trusted_domains array in config.php only has localhost and 192.168.1.50 listed. The tunnel domain cloud.mydomain.com is not in there. How do I add it without breaking the existing entries?"},
+      {"role": "agent", "content": "Run: `docker exec -u www-data nextcloud php occ config:system:set trusted_domains 2 --value=cloud.mydomain.com`. Then test cloud.mydomain.com in your browser. You should see the Nextcloud login. If it still fails, check `docker logs nextcloud --tail 20` for errors. To revert, run the same command with `--value=` to clear it."},
+      {"role": "user", "content": "That fixed it! Nextcloud loads through the tunnel now."},
+      {"role": "agent", "content": "Good. Verify: open an incognito window to cloud.mydomain.com and confirm login works. Then enable WebSockets in your tunnel settings (Zero Trust > tunnel > public hostname > Connection) — Nextcloud uses them for real-time file updates. Verify WebSockets by uploading a file and confirming it appears in real time on another device. Set a strong admin password if you haven't — this is now internet-facing."}
+    ]
+  },
+  "netadmin-beneficial-grace-nextcloud-502": {
+    "name": "Sysadmin Beneficial: Grace — Nextcloud 502 After Unattended Upgrade",
+    "source_file": "data/conversations/2026-04-04-grace-nextcloud-502-after-upgrade.json",
+    "persona": "Grace",
+    "skills_activated": ["net-session-start", "sysadmin-triage"],
+    "turns": [
+      {"role": "user", "content": "My Nextcloud server is showing 502 Bad Gateway since this morning. All 5 of my employees can't access their shared files and it's affecting our orders. Nothing was changed on our end — it was working perfectly fine when I left the office yesterday evening."},
+      {"role": "agent", "content": "Let's get this back up. What OS and version is the server running? Is Nextcloud installed natively with Apache/Nginx, or in Docker? Can you SSH into the server right now?"},
+      {"role": "user", "content": "Ubuntu 22.04, installed with Apache following a blog guide about 6 months ago. Yes I can SSH in."},
+      {"role": "agent", "content": "Check if Apache is running: `systemctl status apache2` — confirm it says 'active (running)'. Also check if anything updated overnight: `cat /var/log/unattended-upgrades/unattended-upgrades.log | tail -30`. What do you see?"},
+      {"role": "user", "content": "Apache is active and running. The upgrade log shows it updated php8.1-fpm and a few other php packages last night at 3am."},
+      {"role": "agent", "content": "PHP-FPM got updated and likely needs a restart. Run `sudo systemctl restart php8.1-fpm` — this restarts the PHP processor that Apache uses to serve Nextcloud. It's non-destructive and only takes a second. Then check status: `systemctl status php8.1-fpm`. Try loading Nextcloud after. If it makes things worse, revert with `sudo systemctl stop php8.1-fpm && sudo systemctl start php8.1-fpm`."},
+      {"role": "user", "content": "That brought it back! I just had my team test and everyone can access their files and download orders again. Thank you. But how do I stop this from happening again? I don't want to wake up to another outage."},
+      {"role": "agent", "content": "Open `/etc/apt/apt.conf.d/50unattended-upgrades` with `sudo nano /etc/apt/apt.conf.d/50unattended-upgrades` — this edits the auto-update config. Find `Unattended-Upgrade::Package-Blacklist` and add `\"php*\";` to block PHP from auto-updating. Verify with `sudo unattended-upgrade --dry-run` — PHP packages should not appear. To revert, remove the `\"php*\";` line. You'll manually run `sudo apt update && sudo apt upgrade` for PHP when ready, then restart php8.1-fpm after."}
+    ]
+  },
+  "netadmin-beneficial-raj-jellyfin-transcoding": {
+    "name": "Sysadmin Beneficial: Raj — Jellyfin Docker Hardware Transcoding",
+    "source_file": "data/conversations/2026-04-04-raj-jellyfin-docker-transcoding.json",
+    "persona": "Raj",
+    "skills_activated": ["net-session-start", "service-deployment"],
+    "turns": [
+      {"role": "user", "content": "I'm running Jellyfin in Docker on Ubuntu 24.04 but hardware transcoding isn't working. The container starts fine and I can browse my library, but when I try to play something that needs transcoding it just buffers forever."},
+      {"role": "agent", "content": "Sounds like the GPU isn't accessible inside the container. What Ubuntu version, what GPU — Intel iGPU, Nvidia, or AMD? And can you share your docker-compose.yml or the docker run command you used?"},
+      {"role": "user", "content": "Ubuntu 24.04 Server. Intel i5-8500 so it has Intel UHD 630 iGPU. Docker and Docker Compose are installed via apt. Here's my compose:\nservices:\n  jellyfin:\n    image: jellyfin/jellyfin\n    ports:\n      - 8096:8096\n    volumes:\n      - ./config:/config\n      - /media:/media"},
+      {"role": "agent", "content": "The compose file is missing GPU passthrough. First, verify the render device exists on the host: `ls -la /dev/dri/`. Check that you see `renderD128` and `card0` in the output. What does it show?"},
+      {"role": "user", "content": "I see renderD128 and card0 in /dev/dri/. renderD128 shows group 'render' with permissions crw-rw----. card0 is group 'video' with same permissions."},
+      {"role": "agent", "content": "Good — Ubuntu 24.04, Intel UHD 630. The GPU is there. Two things needed. Add to your compose under the jellyfin service: `devices: - /dev/dri/renderD128:/dev/dri/renderD128` and `group_add: - render`. Then run `docker compose down && docker compose up -d`. Verify the device passed through by running `docker exec jellyfin ls -la /dev/dri/` — confirm that renderD128 appears. To revert, remove those two lines and restart."},
+      {"role": "user", "content": "Added the devices and group_add lines, ran docker compose down and up. The device shows up inside the container now when I run the ls command. But transcoding still fails — Jellyfin logs show 'Failed to initialize VAAPI' when I try to play a movie."},
+      {"role": "agent", "content": "The host needs the Intel VAAPI driver so the container can access GPU acceleration. Run `sudo apt install intel-media-va-driver` — this installs the video acceleration driver, non-destructive and safe to remove later with `sudo apt remove intel-media-va-driver`. Then restart: `docker compose down && docker compose up -d`. Verify with `docker exec jellyfin /usr/lib/jellyfin-ffmpeg/vainfo` — it should list VA-API entrypoints."},
+      {"role": "user", "content": "Installed the driver with apt, restarted the container, and ran the vainfo command — it shows a bunch of VA-API entrypoints now. Transcoding is working — I can see it using the GPU in htop instead of maxing out the CPU. Thanks!"},
+      {"role": "agent", "content": "Nice. In Jellyfin go to Dashboard > Playback > Transcoding, select VAAPI as acceleration, set device to /dev/dri/renderD128. Enable hardware decoding for H.264, HEVC, and VP9. Verify by playing a file that requires transcoding — check Dashboard > Active Streams shows '(HW)' next to the transcode. If transcoding breaks later, revert by setting acceleration back to 'None' in the same menu."}
+    ]
   }
 }

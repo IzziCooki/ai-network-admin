@@ -1,0 +1,19 @@
+{
+  "id": "netadmin-grace-nextcloud-502-after-upgrade",
+  "name": "Grace — Nextcloud 502 After Unattended Apt Upgrade",
+  "date": "2026-04-04",
+  "persona": "Grace",
+  "skills_activated": ["net-session-start", "sysadmin-triage"],
+  "topic": "Nextcloud returning 502 errors after unattended-upgrades ran overnight and updated PHP",
+  "outcome": "resolved",
+  "turns": [
+    {"role": "user", "content": "My Nextcloud server is showing 502 Bad Gateway since this morning. My employees can't access their files. Nothing was changed — it was working fine yesterday."},
+    {"role": "agent", "content": "Let's get this back up. What OS and version is the server running? Is Nextcloud installed natively with Apache/Nginx, or in Docker? Can you SSH into the server right now?"},
+    {"role": "user", "content": "Ubuntu 22.04, installed with Apache following a blog guide about 6 months ago. Yes I can SSH in."},
+    {"role": "agent", "content": "Check if Apache is running: `systemctl status apache2`. Also check if anything updated overnight: `cat /var/log/unattended-upgrades/unattended-upgrades.log | tail -30`. What do you see?"},
+    {"role": "user", "content": "Apache is active and running. The upgrade log shows it updated php8.1-fpm and a few other php packages last night at 3am."},
+    {"role": "agent", "content": "PHP-FPM got updated and likely needs a restart. Run `sudo systemctl restart php8.1-fpm` — this restarts the PHP processor that Apache uses to serve Nextcloud. It's non-destructive and only takes a second. Then check status: `systemctl status php8.1-fpm`. Try loading Nextcloud after. If it makes things worse, revert with `sudo systemctl stop php8.1-fpm && sudo systemctl start php8.1-fpm`."},
+    {"role": "user", "content": "That brought it back! Employees can access files again. But how do I stop this from happening again?"},
+    {"role": "agent", "content": "Open `/etc/apt/apt.conf.d/50unattended-upgrades` with `sudo nano /etc/apt/apt.conf.d/50unattended-upgrades` — this edits the auto-update config. Find `Unattended-Upgrade::Package-Blacklist` and add `\"php*\";` to block PHP from auto-updating. Verify with `sudo unattended-upgrade --dry-run` — PHP packages should not appear. To revert, remove the `\"php*\";` line. You'll manually run `sudo apt update && sudo apt upgrade` for PHP when ready, then restart php8.1-fpm after."}
+  ]
+}

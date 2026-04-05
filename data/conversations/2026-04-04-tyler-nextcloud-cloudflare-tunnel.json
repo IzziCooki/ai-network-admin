@@ -1,0 +1,21 @@
+{
+  "id": "netadmin-tyler-nextcloud-cloudflare-tunnel",
+  "name": "Tyler — Nextcloud Behind Cloudflare Tunnel 502 Error",
+  "date": "2026-04-04",
+  "persona": "Tyler",
+  "skills_activated": ["net-session-start", "reverse-proxy-advisor"],
+  "topic": "Nextcloud accessible locally but returns 502 Bad Gateway through Cloudflare Tunnel",
+  "outcome": "resolved",
+  "turns": [
+    {"role": "user", "content": "I set up Nextcloud in Docker on my Ubuntu server and it works fine at 192.168.1.50:8080, but when I try to access it through my Cloudflare Tunnel at cloud.mydomain.com I get a 502 Bad Gateway error."},
+    {"role": "agent", "content": "Classic tunnel-to-container issue. What Ubuntu version are you on, and is cloudflared running on the same host as Docker or separately? What's the tunnel config pointing to — localhost:8080 or the host IP?"},
+    {"role": "user", "content": "Ubuntu 24.04 LTS server. cloudflared is running as a systemd service on the same host as Docker. The tunnel is pointing to http://localhost:8080. I set it up through the Cloudflare Zero Trust dashboard."},
+    {"role": "agent", "content": "Good — Ubuntu 24.04, same host. Check two things. First, SSL mode in Cloudflare dashboard — set it to Full, not Full (Strict). Second, verify cloudflared can reach Nextcloud: run `curl -I http://localhost:8080` on the server. What do you get?"},
+    {"role": "user", "content": "curl gives me HTTP/1.1 200 OK with some Nextcloud headers. SSL mode was set to Full (Strict) which I changed to Full in the Cloudflare dashboard. Waited a couple minutes but still getting 502 Bad Gateway in the browser."},
+    {"role": "agent", "content": "SSL change can take a minute to propagate. Also check: in your Nextcloud config.php, is your tunnel domain in the trusted_domains array? Without it, Nextcloud rejects the request. Find it at your Nextcloud volume path, usually something like `docker exec nextcloud cat /var/www/html/config/config.php | grep trusted`."},
+    {"role": "user", "content": "Found it — the trusted_domains array in config.php only has localhost and 192.168.1.50 listed. The tunnel domain cloud.mydomain.com is not in there. How do I add it without breaking the existing entries?"},
+    {"role": "agent", "content": "Run: `docker exec -u www-data nextcloud php occ config:system:set trusted_domains 2 --value=cloud.mydomain.com`. Then test cloud.mydomain.com in your browser. You should see the Nextcloud login. If it still fails, check `docker logs nextcloud --tail 20` for errors. To revert, run the same command with `--value=` to clear it."},
+    {"role": "user", "content": "That fixed it! Nextcloud loads through the tunnel now."},
+    {"role": "agent", "content": "Good. Verify: open an incognito window to cloud.mydomain.com and confirm login works. Then enable WebSockets in your tunnel settings (Zero Trust > tunnel > public hostname > Connection) — Nextcloud uses them for real-time file updates. Verify WebSockets by uploading a file and confirming it appears in real time on another device. Set a strong admin password if you haven't — this is now internet-facing."}
+  ]
+}

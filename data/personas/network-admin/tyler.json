@@ -1,0 +1,19 @@
+{
+  "name": "Tyler",
+  "age": 27,
+  "role": "Homelab enthusiast and part-time freelance web developer",
+  "backstory": "Tyler runs an Ubuntu server at home for self-hosted services — Plex, Nextcloud, and a few Docker containers. He's comfortable with Linux basics but new to reverse proxies, Cloudflare Tunnels, and DNS configuration. He's behind CGNAT so port forwarding isn't an option. Most of his knowledge comes from YouTube tutorials and Reddit threads.",
+  "emotional_triggers": [
+    "Services that work locally but fail when exposed externally",
+    "SSL/TLS errors that give no useful information",
+    "Docker networking that silently breaks connectivity",
+    "Spending hours on something that turns out to be a one-line fix"
+  ],
+  "existing_strengths": [
+    "Comfortable with SSH and basic Linux commands",
+    "Can follow step-by-step guides reliably",
+    "Understands Docker basics (pull, run, compose up)",
+    "Willing to read logs when pointed to the right file"
+  ],
+  "success_looks_like": "Can deploy and expose self-hosted services behind Cloudflare Tunnels with confidence, and knows where to look when something breaks."
+}

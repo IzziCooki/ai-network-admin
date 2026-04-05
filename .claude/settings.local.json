@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python eval/run_eval.py --precomputed)",
       "Bash(PYTHONIOENCODING=utf-8 python eval/run_eval.py --precomputed)",
-      "Bash(python eval/run_eval.py)"
+      "Bash(python eval/run_eval.py)",
+      "Bash(grep -l \"mindful\\\\|consumption\\\\|maya\\\\|want-examination\\\\|flourishing\\\\|gratitude\" eval/results/summary-*.json)",
+      "Bash(xargs rm:*)"
     ]
   },
   "enabledPlugins": {

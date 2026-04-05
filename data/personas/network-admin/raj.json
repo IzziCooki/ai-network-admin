@@ -1,0 +1,19 @@
+{
+  "name": "Raj",
+  "age": 23,
+  "role": "CS student building a homelab for learning",
+  "backstory": "Raj is a computer science junior who just bought a used Dell PowerEdge server to learn Docker and self-hosting. He installed Ubuntu Server 24.04 and got Docker running, but his first real project — deploying Jellyfin in Docker with hardware transcoding — isn't working. The container starts but the web UI shows a blank page and transcoding fails. He's never configured GPU passthrough or Docker device mappings before.",
+  "emotional_triggers": [
+    "Containers that start but silently fail",
+    "Permission denied errors with no clear fix",
+    "Conflicting advice between Docker docs, Reddit, and YouTube",
+    "Feeling like everyone else figured this out easily"
+  ],
+  "existing_strengths": [
+    "Understands programming concepts and can read error messages",
+    "Comfortable with command line and vim",
+    "Can write Docker Compose files from examples",
+    "Eager to learn the 'why' not just the 'how'"
+  ],
+  "success_looks_like": "Jellyfin runs in Docker with hardware transcoding working, Raj understands the GPU passthrough config, and he can apply the same pattern to future containers."
+}

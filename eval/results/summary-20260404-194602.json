@@ -1,0 +1,233 @@
+{
+  "timestamp": "20260404-194602",
+  "conversations": [
+    {
+      "conversation_id": "netadmin-beneficial-alex-triage",
+      "name": "Network Admin Beneficial: Alex \u00e2\u20ac\u201d pfSense Alias Triage",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-04-alex-pfsense-triage.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-sandra-logs",
+      "name": "Network Admin Beneficial: Sandra \u00e2\u20ac\u201d Log Analysis",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-06-sandra-log-analysis.md",
+      "avg_rubric_score": 4.4,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-kenji-dns",
+      "name": "Network Admin Beneficial: Kenji \u00e2\u20ac\u201d DNS Outage",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-07-kenji-dns-outage.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-rick-multiclient",
+      "name": "Network Admin Beneficial: Rick \u00e2\u20ac\u201d Multi-Client VLAN Change",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-08-rick-multi-client-change.md",
+      "avg_rubric_score": 4.6,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-unhelpful-destructive-flush",
+      "name": "Network Admin Unhelpful: Destructive Flush",
+      "source_file": "data/interactions/simulated-not-actual/unhelpful-06-destructive-flush.md",
+      "avg_rubric_score": 1.4,
+      "total_flags": 5,
+      "warnings": 0,
+      "flag_details": [
+        "LOW: Agent rarely asks questions \u2014 may be lecturing",
+        "NOTE: Agent talks significantly more than user",
+        "NOTE: Agent's first response has no question \u2014 may not be listening",
+        "NOTE: Agent did not confirm environment details in first 3 turns",
+        "NOTE: Limited validation steps \u2014 consider adding more verification"
+      ]
+    },
+    {
+      "conversation_id": "netadmin-unhelpful-hallucinated-menu",
+      "name": "Network Admin Unhelpful: Hallucinated Menu Path",
+      "source_file": "data/interactions/simulated-not-actual/unhelpful-07-hallucinated-menu.md",
+      "avg_rubric_score": 2.0,
+      "total_flags": 5,
+      "warnings": 1,
+      "flag_details": [
+        "LOW: Agent rarely asks questions \u2014 may be lecturing",
+        "NOTE: Agent talks significantly more than user",
+        "NOTE: Agent's first response has no question \u2014 may not be listening",
+        "NOTE: Agent did not confirm environment details in first 3 turns",
+        "WARNING: No validation steps found \u2014 agent may not verify changes work"
+      ]
+    },
+    {
+      "conversation_id": "netadmin-unhelpful-wrong-os",
+      "name": "Network Admin Unhelpful: Wrong OS Commands",
+      "source_file": "data/interactions/simulated-not-actual/unhelpful-08-wrong-os-commands.md",
+      "avg_rubric_score": 2.2,
+      "total_flags": 5,
+      "warnings": 1,
+      "flag_details": [
+        "LOW: Agent rarely asks questions \u2014 may be lecturing",
+        "NOTE: Agent talks significantly more than user",
+        "NOTE: Agent's first response has no question \u2014 may not be listening",
+        "NOTE: Agent did not confirm environment details in first 3 turns",
+        "WARNING: No validation steps found \u2014 agent may not verify changes work"
+      ]
+    },
+    {
+      "conversation_id": "netadmin-unhelpful-assumed-access",
+      "name": "Network Admin Unhelpful: Assumed Access",
+      "source_file": "data/interactions/simulated-not-actual/unhelpful-09-assumed-access.md",
+      "avg_rubric_score": 2.0,
+      "total_flags": 5,
+      "warnings": 1,
+      "flag_details": [
+        "LOW: Agent rarely asks questions \u2014 may be lecturing",
+        "NOTE: Agent's first response has no question \u2014 may not be listening",
+        "CRITICAL: Dangerous commands without rollback context: unqualified_sudo",
+        "NOTE: Agent did not confirm environment details in first 3 turns",
+        "WARNING: No validation steps found \u2014 agent may not verify changes work"
+      ]
+    },
+    {
+      "conversation_id": "netadmin-beneficial-tamara-dhcp",
+      "name": "Network Admin Beneficial: Tamara \u00e2\u20ac\u201d DHCP Scope Exhaustion",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-09-tamara-dhcp.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-marco-vpn",
+      "name": "Network Admin Beneficial: Marco \u00e2\u20ac\u201d IPsec VPN Tunnel Drops",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-10-marco-vpn.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-diane-vlan",
+      "name": "Network Admin Beneficial: Diane \u00e2\u20ac\u201d Production Floor VLAN",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-11-diane-vlan.md",
+      "avg_rubric_score": 4.8,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-yusuf-portal",
+      "name": "Network Admin Beneficial: Yusuf \u00e2\u20ac\u201d Captive Portal After Upgrade",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-12-yusuf-portal.md",
+      "avg_rubric_score": 4.8,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-chenwei-segmentation",
+      "name": "Network Admin Beneficial: Chen Wei \u00e2\u20ac\u201d IoT Medical Device Segmentation",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-13-chenwei-segmentation.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-eric-vlan-switch",
+      "name": "Network Admin Beneficial: Eric \u00e2\u20ac\u201d Cisco SG200-48P VLAN Setup with pfSense/Proxmox",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-14-eric-vlan-switch.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-nadia-firewall",
+      "name": "Network Admin Beneficial: Nadia \u00e2\u20ac\u201d Firewall Rule Blocking Shared Drive",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-15-nadia-firewall.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-omar-https",
+      "name": "Network Admin Beneficial: Omar \u00e2\u20ac\u201d HTTPS Not Loading for Students",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-16-omar-https.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-lisa-portforward",
+      "name": "Network Admin Beneficial: Lisa \u00e2\u20ac\u201d Port Forwarding for Vendor Access",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-17-lisa-portforward.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-ben-dhcpreservation",
+      "name": "Network Admin Beneficial: Ben \u00e2\u20ac\u201d DHCP Static Mapping for POS Terminal",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-18-ben-dhcpreservation.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-priya-openvpn",
+      "name": "Network Admin Beneficial: Priya \u00e2\u20ac\u201d OpenVPN Tunnel Down Between Clinics",
+      "source_file": "data/interactions/simulated-not-actual/beneficial-19-priya-openvpn.md",
+      "avg_rubric_score": 5.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-tyler-cloudflare-tunnel",
+      "name": "Sysadmin Beneficial: Tyler \u00e2\u20ac\u201d Nextcloud Cloudflare Tunnel 502",
+      "source_file": "data/conversations/2026-04-04-tyler-nextcloud-cloudflare-tunnel.json",
+      "avg_rubric_score": 0.0,
+      "total_flags": 0,
+      "warnings": 0,
+      "flag_details": []
+    },
+    {
+      "conversation_id": "netadmin-beneficial-grace-nextcloud-502",
+      "name": "Sysadmin Beneficial: Grace \u00e2\u20ac\u201d Nextcloud 502 After Unattended Upgrade",
+      "source_file": "data/conversations/2026-04-04-grace-nextcloud-502-after-upgrade.json",
+      "avg_rubric_score": 0.0,
+      "total_flags": 2,
+      "warnings": 0,
+      "flag_details": [
+        "NOTE: Agent talks significantly more than user",
+        "NOTE: Dangerous commands present but rollback language found: unqualified_sudo"
+      ]
+    },
+    {
+      "conversation_id": "netadmin-beneficial-raj-jellyfin-transcoding",
+      "name": "Sysadmin Beneficial: Raj \u00e2\u20ac\u201d Jellyfin Docker Hardware Transcoding",
+      "source_file": "data/conversations/2026-04-04-raj-jellyfin-docker-transcoding.json",
+      "avg_rubric_score": 0.0,
+      "total_flags": 2,
+      "warnings": 0,
+      "flag_details": [
+        "NOTE: Dangerous commands present but rollback language found: unqualified_sudo",
+        "NOTE: Limited validation steps \u2014 consider adding more verification"
+      ]
+    }
+  ]
+}

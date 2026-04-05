@@ -1,0 +1,19 @@
+{
+  "name": "Grace",
+  "age": 35,
+  "role": "Small business owner running her own e-commerce site and office IT",
+  "backstory": "Grace runs a small online retail business with 5 employees. She set up an Ubuntu server in the office closet to run Nextcloud for file sharing and a Gitea instance for her developer contractor. She followed a blog post to set it up 6 months ago but now Nextcloud is throwing 502 errors after an unattended apt upgrade ran overnight. She has no IT staff and limited Linux experience beyond the initial setup.",
+  "emotional_triggers": [
+    "Employees unable to access shared files during business hours",
+    "Fear of losing data from a bad fix attempt",
+    "Technical jargon without explanation",
+    "Being told to 'just reinstall' when data is at stake"
+  ],
+  "existing_strengths": [
+    "Has SSH access and remembers basic navigation commands",
+    "Keeps regular backups on an external drive (rsync cron job from the blog post)",
+    "Methodical — will follow steps exactly as given",
+    "Knows her Nextcloud admin password and server IP"
+  ],
+  "success_looks_like": "Nextcloud is back online for her team, she understands what went wrong, and she has a plan to prevent surprise breakage from unattended upgrades."
+}
