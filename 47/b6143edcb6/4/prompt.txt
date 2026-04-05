@@ -1,0 +1,195 @@
+I have set up a new ubuntu server running on 192.168.1.225 I set up a plex server with cloudflare tunnle at plex.deanhauser.dev but when I do on the website, the conenction does nothing
+
+---
+
+changing from local host to the actually ip worked, thanks! you can close this session.
+
+---
+
+where do you save these conversations? where can I find the last one?
+
+---
+
+yes, save this converstaions in that file
+
+---
+
+I want to expand the skills from only network admin to also system admin where they troubleshoot like the plex server. Can you add skils, conversations, and personals to cover these topics.
+
+---
+
+/session-start
+
+---
+
+I did not know that was for the different agent, can you go through the files and remove anything left of the other agent. Only the network/system admin agent should be used
+
+---
+
+/sysadmin-triage I have a gpu in my ubuntu vm, what services can I use that will benefit from the gpu power. GTX 1660 4gb
+
+---
+
+I would like to set up ollama
+
+---
+
+ubuntu 24lts, docker is installed, i dont know what nvidia-smi is or how it works
+
+---
+
+dhauser@victus-ubuntu:~$ nvidia-smi
+Command 'nvidia-smi' not found, but can be installed with:
+sudo apt install nvidia-utils-525         # version 525.147.05-0ubuntu1, or
+sudo apt install nvidia-utils-525-server  # version 525.147.05-0ubuntu1
+sudo apt install nvidia-utils-470         # version 470.256.02-0ubuntu0.24.04.1
+sudo apt install nvidia-utils-470-server  # version 470.256.02-0ubuntu0.24.04.1
+sudo apt install nvidia-utils-535         # version 535.288.01-0ubuntu0.24.04.2
+sudo apt install nvidia-utils-535-server  # version 535.288.01-0ubuntu0.24.04.3
+sudo apt install nvidia-utils-565-server  # version 565.57.01-0ubuntu0.24.04.3
+sudo apt install nvidia-utils-570         # version 570.211.01-0ubuntu0.24.04.2
+sudo apt install nvidia-utils-570-server  # version 570.211.01-0ubuntu0.24.04.2
+sudo apt install nvidia-utils-580         # version 580.126.09-0ubuntu0.24.04.2
+sudo apt install nvidia-utils-580-server  # version 580.126.09-0ubuntu0.24.04.2
+sudo apt install nvidia-utils-590         # version 590.48.01-0ubuntu0.24.04.4
+sudo apt install nvidia-utils-590-server  # version 590.48.01-0ubuntu0.24.04.4
+sudo apt install nvidia-utils-550-server  # version 550.163.01-0ubuntu0.24.04.1
+
+---
+
+nvidia-smi now shows the gpu running NVIDIA-SMI 570.211.01             Driver Version: 570.211.01     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce GTX 1650        Off |   00000000:01:00.0 Off |                  N/A |
+| 30%   35C    P8              4W /   75W |       4MiB /   4096MiB |      0%      Default |
+|                                         |                        |                  N/A |
+
+---
+
+Reading state information... Done
+E: Unable to locate package nvidia-container-toolkit
+sudo: nvidia-ctk: command not found
+
+---
+
+the commands you gave me are hard to copy past, make the format better
+
+---
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+dhauser@victus-ubuntu:~$   docker run -d --gpus all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+Unable to find image 'ollama/ollama:latest' locally
+latest: Pulling from ollama/ollama
+090684eb89a7: Download complete
+d31d0971c10d: Pull complete
+817807f3c64e: Pull complete
+b3bf5de5eebd: Pull complete
+ae25ca5ada6c: Pull complete
+Digest: sha256:0455f166da85b1d07f694c33ba09278ca649603c0611ba8e46272b16eed7fccd
+Status: Downloaded newer image for ollama/ollama:latest
+305dc99fe6c7b3c6940350c024e4371fb48c1bc2e46ee4560109a5b74c6b1a33
+docker: Error response from daemon: AMD CDI spec not found I have intel
+
+---
+
+CONTAINER ID   IMAGE           COMMAND               CREATED          STATUS         PORTS                                             NAMES
+3a68fbeda697   ollama/ollama   "/bin/ollama serve"   10 seconds ago   Up 8 seconds   0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp   ollama
+
+---
+
+ollama is not in the proccess list
+
+---
+
+dhauser@victus-ubuntu:~$   docker logs ollama | grep -i gpu
+time=2026-04-05T00:18:02.218Z level=INFO source=routes.go:1744 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://0.0.0.0:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/root/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2026-04-05T00:18:02.218Z level=INFO source=routes.go:1746 msg="Ollama cloud disabled: false"
+time=2026-04-05T00:18:02.219Z level=INFO source=images.go:499 msg="total blobs: 0"
+time=2026-04-05T00:18:02.219Z level=INFO source=images.go:506 msg="total unused blobs removed: 0"
+time=2026-04-05T00:18:02.228Z level=INFO source=routes.go:1802 msg="Listening on [::]:11434 (version 0.20.2)"
+time=2026-04-05T00:18:02.230Z level=INFO source=runner.go:67 msg="discovering available GPUs..."
+time=2026-04-05T00:18:02.262Z level=INFO source=server.go:432 msg="starting runner" cmd="/usr/bin/ollama runner --ollama-engine --port 43581"
+time=2026-04-05T00:18:02.548Z level=INFO source=server.go:432 msg="starting runner" cmd="/usr/bin/ollama runner --ollama-engine --port 45117"
+time=2026-04-05T00:18:02.598Z level=INFO source=runner.go:106 msg="experimental Vulkan support disabled.  To enable, set OLLAMA_VULKAN=1"
+time=2026-04-05T00:18:02.598Z level=INFO source=server.go:432 msg="starting runner" cmd="/usr/bin/ollama runner --ollama-engine --port 35421"
+time=2026-04-05T00:18:02.678Z level=INFO source=types.go:42 msg="inference compute" id=GPU-efb73f82-1de6-e901-ca95-9311bfbdad05 filter_id="" library=CUDA compute=7.5 name=CUDA0 description="NVIDIA GeForce GTX 1650" libdirs=ollama,cuda_v12 driver=12.8 pci_id=0000:01:00.0 type=discrete total="4.0 GiB" available="3.6 GiB"
+time=2026-04-05T00:18:02.678Z level=INFO source=routes.go:1852 msg="vram-based default context" total_vram="4.0 GiB" default_num_ctx=4096
+
+---
+
+Yes, i want to connect the ollam to a web server now
+
+---
+
+server is now running but nothing shows up:       PORTS                                             NAMES
+d3e09bea85d8   ghcr.io/open-webui/open-webui:main   "bash start.sh"       34 seconds ago   Up 28 seconds (health: starting)   0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp       open-webui
+3a68fbeda697   ollama/ollama                        "/bin/ollama serve"   4 minutes ago    Up 4 minutes                       0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp   ollama
+
+---
+
+Ollam web ui is now running, now how to connect the gpu model running?
+
+---
+
+The ollam url is correct but no model shows up in the dropdown
+
+---
+
+The model now shows up. How can I use it and give it memory so that is can become a personal ai for my equipment at some point?
+
+---
+
+perfect. This is the end of the chat. Some feedback to evalulate on, when you give me the user command to copy and paste, they come out formatted weird. Work on perfect copy and paste commands. Any minor type can cause the entire command not to work.
+
+---
+
+Make a skill that will dirrect the user to the correct skill. When they ask a prompt, the skill with figure out what skill to redirect it to
+
+---
+
+/admin-session-start
+
+---
+
+I just setup a ollam server running on my server at 192.168.1.225 I have a gpu gtx 1650 4gb, how to I I create an ai agent using ollam that will monitor my pihole network?
+
+---
+
+Pihole is already running on differnt server at dhauser@192.168.1.12 password: 1000 Ollam is running on 192.168.1.225:11434 and http://192.168.1.225:3000 for web ui. I want to create a script that checks all devices and what websites they have been on in the past 1 hour.
+
+---
+
+Get-Date : Cannot bind parameter 'Date'. Cannot convert value "+%s" to type "System.DateTime". Error: "String was not
+recognized as a valid DateTime."
+At line:1 char:98
++ ... ?getAllQueries&from=$(date -d '1 hour ago' +%s)&to=$(date +%s)&auth=H ...
++                                                               ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Date], ParameterBindingException
+    + FullyQualifiedErrorId : CannotConvertArgumentNoMessage,Microsoft.PowerShell.Commands.GetDateCommand
+
+
+cmdlet Invoke-WebRequest at command pipeline position 1
+Supply values for the following parameters:
+Uri:
+PS C:\Users\deanh>
+
+---
+
+dhauser@pihole:~$   curl -s "http://localhost/admin/api.php?getAllQueries&from=$(date -d '1 hour ago' +%s)&to=$(date +%s)&auth=REDACTED"
+{"error":{"key":"bad_request","message":"Bad request","hint":"The API is hosted at pi.hole/api, not pi.hole/admin/api"},"took":7.5817108154296875e-05}dhauser@pihole:~$
+
+---
+
+dhauser@pihole:~$   curl -s -X POST http://localhost/api/auth -d '{"password":"25Seabright@"}'
+{"session":{"valid":true,"totp":false,"sid":"Sb6HCXlzC8hgmhB3yeISbw=","csrf":"QNSzFnzIUFtOzmTizFOAIg=","validity":1800,"message":"password correct"},"took":0.1349024772644043}
+
+---
+
+Yes it returns lots of stuff: ,{"id":6042455,"time":1775349681.4336495,"type":"PTR","status":"CACHE","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.home.arpa","upstream":null,"reply":{"type":"NXDOMAIN","time":1.7642974853515625e-05},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042454,"time":1775349681.4334209,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.2.168.192.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.02056574821472168},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042453,"time":1775349681.4331708,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.116.16.22.10.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020007848739624023},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042452,"time":1775349679.7126124,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"app-measurement.com","upstream":null,"reply":{"type":"IP","time":6.4373016357421875e-06},"client":{"ip":"192.168.2.35","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042451,"time":1775349679.7124438,"type":"HTTPS","status":"GRAVITY","dnssec":"UNKNOWN","domain":"app-measurement.com","upstream":null,"reply":{"type":"NODATA","time":1.8596649169921875e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042450,"time":1775349675.8231051,"type":"AAAA","status":"CACHE","dnssec":"UNKNOWN","domain":"time.google.com","upstream":null,"reply":{"type":"IP","time":1.049041748046875e-05},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042449,"time":1775349675.8222027,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"time.google.com","upstream":null,"reply":{"type":"IP","time":2.1457672119140625e-05},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042448,"time":1775349675.1856675,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"time.cloudflare.com","upstream":null,"reply":{"type":"IP","time":2.1457672119140625e-05},"client":{"ip":"192.168.1.16","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042447,"time":1775349674.0462646,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"ca.iadsdk.apple.com","upstream":null,"reply":{"type":"IP","time":4.5299530029296875e-06},"client":{"ip":"192.168.2.81","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042446,"time":1775349674.0461571,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"ca.iadsdk.apple.com","upstream":null,"reply":{"type":"IP","time":4.5299530029296875e-06},"client":{"ip":"192.168.2.81","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042445,"time":1775349674.0460138,"type":"HTTPS","status":"GRAVITY","dnssec":"UNKNOWN","domain":"ca.iadsdk.apple.com","upstream":null,"reply":{"type":"NODATA","time":5.245208740234375e-06},"client":{"ip":"192.168.2.81","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042444,"time":1775349674.045856,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"ca.iadsdk.apple.com","upstream":null,"reply":{"type":"IP","time":1.4781951904296875e-05},"client":{"ip":"192.168.2.81","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042443,"time":1775349673.0432711,"type":"AAAA","status":"CACHE","dnssec":"UNKNOWN","domain":"time.google.com","upstream":null,"reply":{"type":"IP","time":8.82148742675781e-06},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042442,"time":1775349673.042985,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"time.google.com","upstream":null,"reply":{"type":"IP","time":3.0755996704101562e-05},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042441,"time":1775349671.5281041,"type":"A","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"mobile.events.data.microsoft.com","upstream":null,"reply":{"type":"CNAME","time":1.9073486328125e-05},"client":{"ip":"192.168.1.16","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042440,"time":1775349671.527626,"type":"HTTPS","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"mobile.events.data.microsoft.com","upstream":null,"reply":{"type":"CNAME","time":1.6450881958007812e-05},"client":{"ip":"192.168.1.16","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042439,"time":1775349671.4478652,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"www.netgear.com","upstream":null,"reply":{"type":"CNAME","time":1.8835067749023438e-05},"client":{"ip":"192.168.1.192","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042438,"time":1775349667.8146486,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"cdn.branch.io","upstream":null,"reply":{"type":"IP","time":1.8358230590820312e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042437,"time":1775349667.8124189,"type":"HTTPS","status":"GRAVITY","dnssec":"UNKNOWN","domain":"cdn.branch.io","upstream":null,"reply":{"type":"NODATA","time":1.811981201171875e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042436,"time":1775349667.7967656,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"spclient.wg.spotify.com","upstream":null,"reply":{"type":"CNAME","time":7.86781311035156e-06},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042435,"time":1775349667.7965353,"type":"HTTPS","status":"CACHE","dnssec":"UNKNOWN","domain":"spclient.wg.spotify.com","upstream":null,"reply":{"type":"CNAME","time":2.002716064453125e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042434,"time":1775349667.6157875,"type":"A","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"links.tospotify.com","upstream":null,"reply":{"type":"IP","time":1.2874603271484375e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042433,"time":1775349667.6155314,"type":"HTTPS","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"links.tospotify.com","upstream":null,"reply":{"type":"NODATA","time":2.956390380859375e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042432,"time":1775349666.8105121,"type":"PTR","status":"CACHE","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.home.arpa","upstream":null,"reply":{"type":"NXDOMAIN","time":3.4570693969726562e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042431,"time":1775349666.8091729,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.2.168.192.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020181894302368164},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042430,"time":1775349666.7884452,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"gue1-spclient.spotify.com","upstream":null,"reply":{"type":"CNAME","time":6.9141387939453125e-06},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042429,"time":1775349666.7880976,"type":"HTTPS","status":"CACHE","dnssec":"UNKNOWN","domain":"gue1-spclient.spotify.com","upstream":null,"reply":{"type":"CNAME","time":3.2663345336914062e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042428,"time":1775349666.7629266,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"gateway.fe2.apple-dns.net","upstream":null,"reply":{"type":"IP","time":1.3589859008789062e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042427,"time":1775349666.7627738,"type":"HTTPS","status":"CACHE","dnssec":"UNKNOWN","domain":"gateway.fe2.apple-dns.net","upstream":null,"reply":{"type":"NODATA","time":2.6226043701171875e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042426,"time":1775349666.7533615,"type":"A","status":"SPECIAL_DOMAIN","dnssec":"UNKNOWN","domain":"mask.icloud.com","upstream":null,"reply":{"type":"NXDOMAIN","time":1.7642974853515625e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042425,"time":1775349666.7524042,"type":"HTTPS","status":"SPECIAL_DOMAIN","dnssec":"UNKNOWN","domain":"mask.icloud.com","upstream":null,"reply":{"type":"NXDOMAIN","time":1.7642974853515625e-05},"client":{"ip":"192.168.2.35","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042424,"time":1775349666.6103315,"type":"AAAA","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"clients3.google.com","upstream":null,"reply":{"type":"CNAME","time":1.2636184692382812e-05},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042423,"time":1775349666.609406,"type":"A","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"clients3.google.com","upstream":null,"reply":{"type":"CNAME","time":1.8596649169921875e-05},"client":{"ip":"192.168.2.50","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042422,"time":1775349665.4473994,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.11.15.10.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020053863525390625},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042421,"time":1775349665.44723,"type":"PTR","status":"CACHE","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.home.arpa","upstream":null,"reply":{"type":"NXDOMAIN","time":1.2636184692382812e-05},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042420,"time":1775349665.4470429,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.2.168.192.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020295381546020508},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042419,"time":1775349665.4467535,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.116.16.22.10.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020490169525146484},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042418,"time":1775349664.7613864,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"api.wyzecam.com","upstream":null,"reply":{"type":"CNAME","time":2.9802322387695312e-05},"client":{"ip":"192.168.3.29","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042417,"time":1775349661.085459,"type":"A","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"akamai-gcs-streams-prod.fubo.tv","upstream":null,"reply":{"type":"CNAME","time":2.7179718017578125e-05},"client":{"ip":"192.168.2.53","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042416,"time":1775349657.12881,"type":"A","status":"GRAVITY","dnssec":"UNKNOWN","domain":"scribe.logs.roku.com","upstream":null,"reply":{"type":"IP","time":1.9073486328125e-05},"client":{"ip":"192.168.2.45","name":null},"list_id":-3,"ede":{"code":-1,"text":null},"cname":null},{"id":6042415,"time":1775349656.8331084,"type":"A","status":"CACHE","dnssec":"UNKNOWN","domain":"www.zerotier.com","upstream":null,"reply":{"type":"CNAME","time":1.3113021850585938e-05},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042414,"time":1775349655.7901409,"type":"A","status":"CACHE_STALE","dnssec":"UNKNOWN","domain":"www.zerotier.com","upstream":null,"reply":{"type":"CNAME","time":2.09808349609375e-05},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042413,"time":1775349655.000756,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.11.15.10.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.019999504089355469},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042412,"time":1775349655.0006075,"type":"PTR","status":"CACHE","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.home.arpa","upstream":null,"reply":{"type":"NXDOMAIN","time":1.5735626220703125e-05},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null},{"id":6042411,"time":1775349655.000423,"type":"PTR","status":"FORWARDED","dnssec":"UNKNOWN","domain":"lb._dns-sd._udp.0.2.168.192.in-addr.arpa","upstream":"8.8.8.8#53","reply":{"type":"NXDOMAIN","time":0.020119190216064453},"client":{"ip":"192.168.2.140","name":null},"list_id":null,"ede":{"code":-1,"text":null},"cname":null}],"cursor":6042510,"recordsTotal":360039,"recordsFiltered":12789,"draw":0,"earliest_timestamp":1775263200,"earliest_timestamp_disk":1767410700,"took":0.035866498947143555}d
+
+---
+
+The copy paste does not work once again, work on that please
