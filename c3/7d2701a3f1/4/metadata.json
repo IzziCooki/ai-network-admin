@@ -1,9 +1,11 @@
 {
   "cli_version": "0.5.2",
   "checkpoint_id": "c37d2701a3f1",
+  "session_id": "b32147b9-2120-4c0c-a3c4-de7b33711b85",
   "strategy": "manual-commit",
+  "created_at": "2026-04-05T00:31:05.6894138Z",
   "branch": "main",
-  "checkpoints_count": 24,
+  "checkpoints_count": 21,
   "files_touched": [
     ".claude/settings.json",
     ".claude/settings.local.json",
@@ -85,43 +87,26 @@
     "experiments/maya-1-plan-for-social-connection-suggesting.md",
     "experiments/maya-1.md"
   ],
-  "sessions": [
-    {
-      "metadata": "/c3/7d2701a3f1/0/metadata.json",
-      "transcript": "/c3/7d2701a3f1/0/full.jsonl",
-      "content_hash": "/c3/7d2701a3f1/0/content_hash.txt",
-      "prompt": "/c3/7d2701a3f1/0/prompt.txt"
-    },
-    {
-      "metadata": "/c3/7d2701a3f1/1/metadata.json",
-      "transcript": "/c3/7d2701a3f1/1/full.jsonl",
-      "content_hash": "/c3/7d2701a3f1/1/content_hash.txt",
-      "prompt": "/c3/7d2701a3f1/1/prompt.txt"
-    },
-    {
-      "metadata": "/c3/7d2701a3f1/2/metadata.json",
-      "transcript": "/c3/7d2701a3f1/2/full.jsonl",
-      "content_hash": "/c3/7d2701a3f1/2/content_hash.txt",
-      "prompt": "/c3/7d2701a3f1/2/prompt.txt"
-    },
-    {
-      "metadata": "/c3/7d2701a3f1/3/metadata.json",
-      "transcript": "/c3/7d2701a3f1/3/full.jsonl",
-      "content_hash": "/c3/7d2701a3f1/3/content_hash.txt",
-      "prompt": ""
-    },
-    {
-      "metadata": "/c3/7d2701a3f1/4/metadata.json",
-      "transcript": "/c3/7d2701a3f1/4/full.jsonl",
-      "content_hash": "/c3/7d2701a3f1/4/content_hash.txt",
-      "prompt": "/c3/7d2701a3f1/4/prompt.txt"
-    }
-  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-4-6[1m]",
+  "turn_id": "94cd4c59a918",
   "token_usage": {
-    "input_tokens": 360,
-    "cache_creation_tokens": 402083,
-    "cache_read_tokens": 19914178,
-    "output_tokens": 120094,
-    "api_call_count": 269
+    "input_tokens": 173,
+    "cache_creation_tokens": 100075,
+    "cache_read_tokens": 8864833,
+    "output_tokens": 41943,
+    "api_call_count": 126
+  },
+  "session_metrics": {
+    "turn_count": 24
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-05T00:31:04.853197Z",
+    "agent_lines": 408,
+    "human_added": 0,
+    "human_modified": 4125,
+    "human_removed": 0,
+    "total_committed": 4533,
+    "agent_percentage": 9.00066181336863
   }
 }
